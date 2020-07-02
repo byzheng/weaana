@@ -1,0 +1,10 @@
+Package: weaana
+Maintainer: Bangyou Zheng <Bangyou.Zheng@csiro.au>
+License: GPL-3
+Title: Analysis the weather data
+Type: Package
+Author: Bangyou Zheng
+Description: Analysis the weather data
+Version: 0.1.0.4507
+Date: 2010-04-30
+RoxygenNote: 7.1.0
