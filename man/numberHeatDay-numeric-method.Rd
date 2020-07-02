@@ -5,8 +5,7 @@
 \alias{numberHeatDay,numeric-method}
 \title{Calculate number of heat day}
 \usage{
-\S4method{numberHeatDay}{numeric}(object,
-  stress = waGetPara("extreme$maxt$hot.day$value"))
+\S4method{numberHeatDay}{numeric}(object, stress = waGetPara("extreme$maxt$hot.day$value"))
 }
 \arguments{
 \item{object}{A numeric object.}

@@ -5,9 +5,12 @@
 \alias{lastFrostDay,numeric-method}
 \title{Calculate the last frost}
 \usage{
-\S4method{lastFrostDay}{numeric}(object,
-  stress = waGetPara("extreme$mint$frost.night$value"), latitude = -20,
-  offset = 0)
+\S4method{lastFrostDay}{numeric}(
+  object,
+  stress = waGetPara("extreme$mint$frost.night$value"),
+  latitude = -20,
+  offset = 0
+)
 }
 \arguments{
 \item{object}{A numeric object.}

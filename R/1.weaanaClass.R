@@ -27,6 +27,7 @@
 #' @slot file.path The file path for this site.
 #' @slot data.format The data format for this site.
 #' @slot load.later Whether are records loaded laterly.
+#' @exportClass WeaAnaSite
 setClass(
         Class="WeaAnaSite",
         representation = representation(
@@ -76,6 +77,7 @@ setClass(
 #' @docType class
 #' @slot name Name of result
 #' @slot type Type of result
+#' @exportClass result
 setClass(
         Class="result",
         representation = representation(

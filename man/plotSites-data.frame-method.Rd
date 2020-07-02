@@ -5,8 +5,15 @@
 \alias{plotSites,data.frame-method}
 \title{Plot site position in a map}
 \usage{
-\S4method{plotSites}{data.frame}(object, lines = ozRegion(),
-  sitename = FALSE, col = "red", pch = 24, text.cex = 0.8, ...)
+\S4method{plotSites}{data.frame}(
+  object,
+  lines = ozRegion(),
+  sitename = FALSE,
+  col = "red",
+  pch = 24,
+  text.cex = 0.8,
+  ...
+)
 }
 \arguments{
 \item{object}{A data.frame object.}

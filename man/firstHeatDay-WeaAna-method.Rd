@@ -5,9 +5,13 @@
 \alias{firstHeatDay,WeaAna-method}
 \title{Calculate the first heat day}
 \usage{
-\S4method{firstHeatDay}{WeaAna}(object,
+\S4method{firstHeatDay}{WeaAna}(
+  object,
   stress = waGetPara("extreme$maxt$hot.day$value"),
-  yrange = waGetPara("yrange"), conse = 1, offset = 0)
+  yrange = waGetPara("yrange"),
+  conse = 1,
+  offset = 0
+)
 }
 \arguments{
 \item{object}{A WeaAna object.}

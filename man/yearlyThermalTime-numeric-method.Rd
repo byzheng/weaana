@@ -5,9 +5,12 @@
 \alias{yearlyThermalTime,numeric-method}
 \title{Calculate yearly thermal time}
 \usage{
-\S4method{yearlyThermalTime}{numeric}(object,
+\S4method{yearlyThermalTime}{numeric}(
+  object,
   base.temperature = waGetPara("base.temperature"),
-  day.begin = waGetPara("day.begin"), day.end = waGetPara("day.end"))
+  day.begin = waGetPara("day.begin"),
+  day.end = waGetPara("day.end")
+)
 }
 \arguments{
 \item{object}{A numeric object.}

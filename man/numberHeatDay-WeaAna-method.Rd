@@ -5,9 +5,11 @@
 \alias{numberHeatDay,WeaAna-method}
 \title{Calculate number of heat day}
 \usage{
-\S4method{numberHeatDay}{WeaAna}(object,
+\S4method{numberHeatDay}{WeaAna}(
+  object,
   stress = waGetPara("extreme$maxt$hot.day$value"),
-  yrange = waGetPara("yrange"))
+  yrange = waGetPara("yrange")
+)
 }
 \arguments{
 \item{object}{A WeaAna object.}

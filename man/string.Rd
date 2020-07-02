@@ -27,7 +27,7 @@ vector2string(vector, sep = ", ")
 \arguments{
 \item{str}{Input string}
 
-\item{num}{The number of character will be returned from left}
+\item{num}{The number of character will be returned from right}
 
 \item{search}{The character will be searched}
 
@@ -36,18 +36,6 @@ vector2string(vector, sep = ", ")
 \item{vector}{The input vector to convert}
 
 \item{sep}{The separater with default value ", "}
-
-\item{str}{Input string}
-
-\item{str}{Input string}
-
-\item{num}{The number of character will be returned from right}
-
-\item{str}{Input string}
-
-\item{str}{Input string}
-
-\item{str}{Input string}
 }
 \value{
 The character number of the string

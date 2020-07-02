@@ -5,8 +5,7 @@
 \alias{wcal,WeaAna-method}
 \title{Calculate weather variables through function or a string formula.}
 \usage{
-\S4method{wcal}{WeaAna}(object, FUN = NULL, ..., var.args = NULL,
-  var.name = NULL)
+\S4method{wcal}{WeaAna}(object, FUN = NULL, ..., var.args = NULL, var.name = NULL)
 }
 \arguments{
 \item{object}{A WeaAna objects.}

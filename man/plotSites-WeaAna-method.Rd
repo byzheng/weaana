@@ -5,8 +5,14 @@
 \alias{plotSites,WeaAna-method}
 \title{Plot site position in a map}
 \usage{
-\S4method{plotSites}{WeaAna}(object, lines = ozRegion(), sitename = FALSE,
-  col = "red", pch = 24, ...)
+\S4method{plotSites}{WeaAna}(
+  object,
+  lines = ozRegion(),
+  sitename = FALSE,
+  col = "red",
+  pch = 24,
+  ...
+)
 }
 \arguments{
 \item{object}{A WeaAna object.}

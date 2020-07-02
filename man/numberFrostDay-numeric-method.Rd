@@ -5,8 +5,7 @@
 \alias{numberFrostDay,numeric-method}
 \title{Calculate number of frost day}
 \usage{
-\S4method{numberFrostDay}{numeric}(object,
-  stress = waGetPara("extreme$mint$frost.night$value"))
+\S4method{numberFrostDay}{numeric}(object, stress = waGetPara("extreme$mint$frost.night$value"))
 }
 \arguments{
 \item{object}{A numeric object.}

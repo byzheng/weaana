@@ -5,10 +5,16 @@
 \alias{movExtremeByDegreeDay,WeaAna-method}
 \title{Calculate the moving extreme temperature by commulated temperature}
 \usage{
-\S4method{movExtremeByDegreeDay}{WeaAna}(object,
-  indices = waGetPara("extreme"), period = 400,
-  shift = waGetPara("shift"), yrange = waGetPara("yrange"),
-  numdays = waGetPara("numdays"), res.name = "movExtremeByDegreeDay", ...)
+\S4method{movExtremeByDegreeDay}{WeaAna}(
+  object,
+  indices = waGetPara("extreme"),
+  period = 400,
+  shift = waGetPara("shift"),
+  yrange = waGetPara("yrange"),
+  numdays = waGetPara("numdays"),
+  res.name = "movExtremeByDegreeDay",
+  ...
+)
 }
 \arguments{
 \item{indices}{The data will be classify according the classes}

@@ -11,8 +11,14 @@
 \usage{
 newPointer(value)
 
-readWeatherRecords(dataFiles = NULL, dataFolders = NULL,
-  dataFormat = "APSIM", dataWeather = NULL, load.later = FALSE, ...)
+readWeatherRecords(
+  dataFiles = NULL,
+  dataFolders = NULL,
+  dataFormat = "APSIM",
+  dataWeather = NULL,
+  load.later = FALSE,
+  ...
+)
 
 readSite(filename, dataFormat = "APSIM", ...)
 
@@ -36,21 +42,9 @@ readSiteGHCN(filename, ...)
 \item{load.later}{Whether load weather records now or later. 
 "dataFroamt" should be One of "APSIM" and "RDATA".}
 
-\item{...}{Other arguments}
-
-\item{filename}{The file name of weather data file.}
-
-\item{dataFormat}{The format of weather data file.}
-
-\item{...}{Other arguments}
-
-\item{filename}{The file name of weather data file.}
-
-\item{filename}{The file name of weather data file.}
-
-\item{filename}{The file name of weather data file.}
-
 \item{...}{Other arguments for site information}
+
+\item{filename}{The file name of weather data file.}
 }
 \value{
 A new pointer to value

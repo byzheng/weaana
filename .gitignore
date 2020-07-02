@@ -4,3 +4,6 @@
 .Ruserdata
 *.Rds
 test.R
+inst/doc
+doc
+Meta

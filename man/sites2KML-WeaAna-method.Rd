@@ -5,8 +5,7 @@
 \alias{sites2KML,WeaAna-method}
 \title{Convert site position to KML file}
 \usage{
-\S4method{sites2KML}{WeaAna}(object, file = "site.kml", name = TRUE,
-  symbol = 1)
+\S4method{sites2KML}{WeaAna}(object, file = "site.kml", name = TRUE, symbol = 1)
 }
 \arguments{
 \item{object}{A WeaAna object.}

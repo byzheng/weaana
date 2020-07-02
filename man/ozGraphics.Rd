@@ -11,8 +11,14 @@ makeOzViewports(ozRegion, xlim = ozRegion$rangex, ylim = ozRegion$rangey)
 
 makeOzLines(ozRegion)
 
-ozGrob(ozRegion, name = NULL, gp = NULL, vp = NULL,
-  xlim = ozRegion$rangex, ylim = ozRegion$rangey)
+ozGrob(
+  ozRegion,
+  name = NULL,
+  gp = NULL,
+  vp = NULL,
+  xlim = ozRegion$rangex,
+  ylim = ozRegion$rangey
+)
 
 grid.ozGrob(...)
 }
@@ -26,10 +32,6 @@ grid.ozGrob(...)
 \item{vp}{A viewport object}
 
 \item{...}{For graphics parameters}
-
-\item{ozRegion}{an object of class "ozRegion" for library ozRegion}
-
-\item{ozRegion}{an object of class "ozRegion" for library ozRegion}
 }
 \description{
 All codes copy from library RGraphics. The xscale and yscale were changed to draw more figures in the right and top

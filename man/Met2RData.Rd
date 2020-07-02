@@ -4,8 +4,12 @@
 \alias{Met2RData}
 \title{Convert met file to RData files}
 \usage{
-Met2RData(dataFiles = NULL, dataFolders = NULL, outputFolder = NULL,
-  dataFormat = "APSIM")
+Met2RData(
+  dataFiles = NULL,
+  dataFolders = NULL,
+  outputFolder = NULL,
+  dataFormat = "APSIM"
+)
 }
 \arguments{
 \item{dataFiles}{A character vector to specify the path of weather data files.}

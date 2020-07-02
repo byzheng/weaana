@@ -5,9 +5,13 @@
 \alias{yearlyThermalTime,WeaAna-method}
 \title{Calculate yearly thermal time}
 \usage{
-\S4method{yearlyThermalTime}{WeaAna}(object, yrange = waGetPara(object,
-  "yrange"), base.temperature = waGetPara("base.temperature"),
-  day.begin = waGetPara("day.begin"), day.end = waGetPara("day.end"))
+\S4method{yearlyThermalTime}{WeaAna}(
+  object,
+  yrange = waGetPara(object, "yrange"),
+  base.temperature = waGetPara("base.temperature"),
+  day.begin = waGetPara("day.begin"),
+  day.end = waGetPara("day.end")
+)
 }
 \arguments{
 \item{object}{A WeaAna object.}

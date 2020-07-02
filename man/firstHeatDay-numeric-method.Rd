@@ -5,9 +5,13 @@
 \alias{firstHeatDay,numeric-method}
 \title{Calculate the first heat day}
 \usage{
-\S4method{firstHeatDay}{numeric}(object,
-  stress = waGetPara("extreme$maxt$hot.day$value"), latitude = -20,
-  conse = 1, offset = 0)
+\S4method{firstHeatDay}{numeric}(
+  object,
+  stress = waGetPara("extreme$maxt$hot.day$value"),
+  latitude = -20,
+  conse = 1,
+  offset = 0
+)
 }
 \arguments{
 \item{object}{A numeric object.}

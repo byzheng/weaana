@@ -5,9 +5,18 @@
 \alias{wapply,WeaAna-method}
 \title{Statistics weather records by a certain period and function}
 \usage{
-\S4method{wapply}{WeaAna}(object, vars, period, FUN, ARGS = NULL,
-  site.ARGS = NULL, res.name = "result", yrange = waGetPara("yrange"),
-  as.data.frame = FALSE, extra = NULL)
+\S4method{wapply}{WeaAna}(
+  object,
+  vars,
+  period,
+  FUN,
+  ARGS = NULL,
+  site.ARGS = NULL,
+  res.name = "result",
+  yrange = waGetPara("yrange"),
+  as.data.frame = FALSE,
+  extra = NULL
+)
 }
 \arguments{
 \item{object}{A WeaAna objects.}
@@ -45,7 +54,7 @@ Available variables could be obtained through function \code{\link{getAvaiVars}}
 It will be complicated to the same length of \code{vars}.
 
 \code{FUN} could be a vector. \code{FUN} will be replicated to the same length as \code{vars}.
-Each \code{FUN} will be applied to each \code{vars} as the sequence of \code{vars}.
+Each \code{FUN} will be applied to each \code{vars} as the sequence of \code{vars}. 
 
 Optional arguments \code{args} is a list which have the same length as \code{FUN}.
 Each element of \code{args} is the optional arguments for each \code{FUN}. 

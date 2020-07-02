@@ -5,10 +5,15 @@
 \alias{movExtremeByDay,WeaAna-method}
 \title{Calculate the moving extreme temperature by days}
 \usage{
-\S4method{movExtremeByDay}{WeaAna}(object, indices = waGetPara("extreme"),
-  period = waGetPara("mov.window"), shift = waGetPara("shift"),
-  yrange = waGetPara("yrange"), numdays = waGetPara("numdays"),
-  res.name = "movExtremeByDay")
+\S4method{movExtremeByDay}{WeaAna}(
+  object,
+  indices = waGetPara("extreme"),
+  period = waGetPara("mov.window"),
+  shift = waGetPara("shift"),
+  yrange = waGetPara("yrange"),
+  numdays = waGetPara("numdays"),
+  res.name = "movExtremeByDay"
+)
 }
 \arguments{
 \item{object}{A WeaAna object.}

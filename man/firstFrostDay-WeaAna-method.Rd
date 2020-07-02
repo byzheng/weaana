@@ -5,9 +5,11 @@
 \alias{firstFrostDay,WeaAna-method}
 \title{Calculate the last frost}
 \usage{
-\S4method{firstFrostDay}{WeaAna}(object,
+\S4method{firstFrostDay}{WeaAna}(
+  object,
   stress = waGetPara("extreme$mint$frost.night$value"),
-  yrange = waGetPara("yrange"))
+  yrange = waGetPara("yrange")
+)
 }
 \arguments{
 \item{object}{A WeaAna object.}
