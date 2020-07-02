@@ -1,0 +1,150 @@
+---
+title: "Weather analysis"
+author: "Bangyou Zheng"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Weather analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE
+)
+```
+
+WeaAna is a R package to analysis weather records, easily to show analysis results, and to access statistics results.
+
+```{r setup}
+library(weaana)
+```
+
+# Features
+1. Multiple weather stations manage and analysis.
+2. Auto load weather records when they are needed to save memory.
+3. Handy functions to calculate extra daily weather variables and analysis weather conditions.
+
+# Read weather records
+## readWeatherRecords
+
+Currently, WeaAna package supports weather records files with APSIM format with extension “met” or “MET” and “RDATA”. For “RDATA” format. Please see demo files for the detailed format about “met” files. RData files are saved variables which class are WeaAna class to save storing space and loading speed. One RData file only could contain the weather records of one station. Other results and other information are omitted. Function “Met2RData” would be the best way to convert met file to RData file. Other formats would be gradually added if it is necessary.
+
+Function “readWeatherRecords” is used to read weather records from files. For example:
+
+```{r}
+records <- readWeatherRecords(dataFolders = system.file("data", package = "weaana"))
+met_files <- list.files(system.file("data", package = "weaana"), "*.met", full.names = TRUE)
+records <- readWeatherRecords(met_files)
+records
+```
+
+The first two lines read weather records from APSIM met files and the second two lines from RData files. Weather record files could be specified by parameters “dataFolders” and “dataFiles”, which could be vectors to list all files or folders. The duplicate files are omitted. Function “readWeatherRecords” is return a S4 class WeaAna which contained all weather records and other information. All other functions are based on the S4 class WeaAna.
+
+## Load weather records later
+
+If many weather stations are analyzed at the same time, your computer would be out of memory. “weaana” package is designed to deal with this problem. All weather records will not be really loaded when “readWeatherRecords” is called with “load.later = TRUE”. Weather records will be loaded when some functions need them, then these records will be removed from memory except station name, number, latitude, and longitude. So, all station information are available when some statistics or plot functions are called. Function “siteInfor” with argument “load.now = TRUE” will read site basic information and store them into WeaAna class. 
+
+```{r}
+records <- readWeatherRecords(met_files, load.later = TRUE )
+# Collect information of weather stations
+siteInfor(records, load.now = TRUE)
+```
+
+2.3 Extra marker
+Some extra markers could be added to identify each site. Function “addMarkers” and “delMarkers” are used to add and delete markers, respectively.
+```{r}
+addMarkers(records, model = c("Model1", "Model2"))
+records
+delMarkers(records, name = "model")
+records
+```
+
+# Access information of WeaAna class
+S4 class WeaAna are used to store information of multiple sites. The real weather records and statistics results are stored another S4 class WeaAnaSite which can not access by user. A pointer of WeaAnaSite is stored in WeaAna variable for each site to reduce memory usage. Consequently, any change of the a subset of WeaAna variable will be stored and reloaded after saving to RData file with R function “save”.
+
+The operator [ is used to get a subset ofWeaAna class. A numeric vector is needed to specify positions. Examples as follows.
+
+```{r}
+new.record <- records[1]
+new.record
+new.record <- records[1:2]
+new.record
+```
+
+Function “print”, “show” or just input variable of WeaAna class show basic information of all weather stations (name, number, latitude and longitude). The daily weather records are skipped.
+
+Function “siteInfor” is returned the same result, but is a data frame which have four columns for Name, Number, Latitude and Longitude.
+```{r}
+siteInfor(records)
+```
+
+# Station position information
+
+Function “sites2KML” convert site positions to KML file. The station names could not be output with “name = FALSE”.
+```{r}
+#sites2KML(records, file = "sites.kml", name = FALSE)
+```
+
+Function “plotSites” shows positions of all weather stations in a map (Figure 4.1).
+```{r}
+plotSites(records, lines = ozRegion(), sitename = FALSE, col = "red", pch = 24)
+```
+
+The default map is Australia map from oz package. The map can be specified by parameter “lines” which is a list of latitude and longitude of all lines. The site name, colour and symbol style could be set by other parameters.
+
+
+# Weather analysis
+## Add weather variables
+Function “wcal” is a flexible function to calculate weather variables through functions or string formula. This function could be used to calculate extra variables according weather records and knowing variables. Function “getAvaiVars” could be used to obtain all knowing variables. 
+
+Function “wcal” is string formula mode if FUN is NULL. String formula which contains variable name would be explained for each site. The argument name will be stored as variable names. The following codes are used to calculate average temperature.
+```{r}
+data("WeatherRecordsDemo")
+wcal(records, avgt2 = "(maxt + mint)/2")
+```
+
+If FUN is specified, function “wcal” is function mode. FUN will be called with args and optional arguments. The following codes are used to calculate moving average temperature with function mov.avg.
+
+```{r}
+# Moving average temperature
+wcal(records, FUN = mov.avg, var.args = "avgt", k = 5, shift = "begin", var.name = "mov.avg")
+# The codes get the same results
+wcal(records, mov.avg = "mov.avg(avgt k = 5, shift = \"begin\")")
+```
+
+If “load.later” is TRUE when readWeatherRecords is called, “wcal” will not really be executed. These functions will be evaluated when weather records are needed.
+
+## Analysis weather variables
+Function “wapply” is a powerful function to statistics weather records by a certain period and functions. Most of other weather analysis functions are based on wapply. This are some simple examples to use “wapply”:
+
+```{r}
+# daily mean temperature
+a <- wapply(records, vars = "avgt", period = "day", FUN = mean)
+# yealy total rainfall
+a <- wapply(records, vars = "rain", period = "year", FUN = sum)
+# yearly mean temperature
+a <- wapply(records, vars = "avgt", period = "year", FUN = mean)
+# monthly mean temperature
+a <- wapply(records, vars = "avgt", period = "month", FUN = mean)
+# 10 days mean temperature
+a <- wapply(records, vars = "avgt", period = 10, FUN = mean)
+
+head(a)
+```
+
+Many variables could be calculated with different functions at the same time. FUN will be replicated if length of FUN is less than that of vars. The following codes are used to calculate yearly average temperature, total rainfall and average radiation at one call.
+```{r}
+# yearly mean temperature, total raifall and mean radiation.
+a <- wapply(records, vars = c( "avgt", "rain", "radn" ), period = "year", 
+        FUN = c( mean, sum ),
+        res.name = c( "mean.avgt", "total.rain", "mean.radn"))
+head(a[[1]])
+```
+
+Difference parameters could be set for each level if FUN need more optional parameters. The following codes are used to calculate thermal time from last frost day to first heat day from 1960 to 2009.
+
+
