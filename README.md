@@ -1,5 +1,7 @@
 # Weather analysis
 
+![R-CMD-check](https://github.com/byzheng/weaana/workflows/R-CMD-check/badge.svg)
+
 A R package for weather analysis
 
 
