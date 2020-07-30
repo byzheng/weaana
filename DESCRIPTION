@@ -1,10 +1,17 @@
 Package: weaana
 Maintainer: Bangyou Zheng <Bangyou.Zheng@csiro.au>
 License: GPL-3
-Title: Analysis the weather data
+Title: Analysis the Weather Data
 Type: Package
-Author: Bangyou Zheng
 Description: Analysis the weather data
+Authors@R: person("Bangyou", "Zheng", 
+               email = "bangyou.zheng@csiro.au", 
+               role = c("aut", "cre"))
+License: file LICENSE
+URL: https://weaana.bangyou.me/,
+    https://github.com/byzheng/weaana
+BugReports: https://github.com/byzheng/weaana/issues
+Encoding: UTF-8
 Version: 0.1.0.4507
 Date: 2010-04-30
 RoxygenNote: 7.1.0

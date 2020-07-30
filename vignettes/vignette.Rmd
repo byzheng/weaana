@@ -36,8 +36,8 @@ Currently, WeaAna package supports weather records files with APSIM format with 
 Function “readWeatherRecords” is used to read weather records from files. For example:
 
 ```{r}
-records <- readWeatherRecords(dataFolders = system.file("data", package = "weaana"))
-met_files <- list.files(system.file("data", package = "weaana"), "*.met", full.names = TRUE)
+records <- readWeatherRecords(dataFolders = system.file("extdata", package = "weaana"))
+met_files <- list.files(system.file("extdata", package = "weaana"), "*.met", full.names = TRUE)
 records <- readWeatherRecords(met_files)
 records
 ```
@@ -113,7 +113,7 @@ If FUN is specified, function “wcal” is function mode. FUN will be called wi
 # Moving average temperature
 wcal(records, FUN = mov.avg, var.args = "avgt", k = 5, shift = "begin", var.name = "mov.avg")
 # The codes get the same results
-wcal(records, mov.avg = "mov.avg(avgt k = 5, shift = \"begin\")")
+wcal(records, mov.avg2 = "mov.avg(avgt, k = 5, shift = \"begin\")")
 ```
 
 If “load.later” is TRUE when readWeatherRecords is called, “wcal” will not really be executed. These functions will be evaluated when weather records are needed.
