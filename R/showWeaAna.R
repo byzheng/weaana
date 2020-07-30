@@ -12,7 +12,6 @@
 #' data( "WeatherRecordsDemo" ) 
 #' show( records )
 #' records
-#' @importFrom methods show
 setMethod( "show", signature = c(  object = "WeaAna" ),
         definition = function( object )
         {

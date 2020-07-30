@@ -36,6 +36,7 @@ jobs:
         run: |
           install.packages("remotes")
           # To get links for homepage
+          remotes::install_cran("oz")
           remotes::install_cran("devtools")
           remotes::install_deps(dependencies = TRUE)
           remotes::install_dev("pkgdown")
