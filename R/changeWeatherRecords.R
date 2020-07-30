@@ -42,7 +42,7 @@ setMethod(f = 'changeWeatherRecords',
         }
         for (i in seq(along = new_values))
         {
-            slot(records$value, new_cols[i]) <- rep(new_values[[i]], 
+            methods::slot(records$value, new_cols[i]) <- rep(new_values[[i]], 
                 length.out = records_row)
         }
     }

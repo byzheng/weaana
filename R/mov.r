@@ -84,7 +84,7 @@ mov <- function( x, k = 10, shift = "centre", fun = "mean" )
     y <- NULL
     if ( sum( fun == c( "mean", "max", "min", "sum" ) ) )
     {
-        y <- apply( embed( x, k ), 1, fun )
+        y <- apply( stats::embed( x, k ), 1, fun )
         
         if ( shift == "begin" )
         {

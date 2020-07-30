@@ -2,12 +2,14 @@
 % Please edit documentation in R/utilities.R
 \name{ttest_ts}
 \alias{ttest_ts}
-\title{Significantly t-test with autocorrelation for time serial data}
+\title{Significantly t-test with auto-correlation for time serial data}
 \usage{
 ttest_ts(y, slope = NULL)
 }
 \arguments{
-\item{x}{A vector of time serial data}
+\item{y}{A vector of time serial data}
+
+\item{slope}{Whether export slope}
 }
 \description{
 Method is presented by Santer et al. 2000

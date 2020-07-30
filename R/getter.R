@@ -42,7 +42,7 @@ setMethod( f = "[",
                     
             }
             
-            records <- new( "WeaAna",
+            records <- methods::new( "WeaAna",
                     num = num,
                     records = sites.records,
                     result = x@result )
@@ -294,7 +294,6 @@ setMethod( f = "resultsInfor",
 #' 
 #' @param object A WeaAna object.
 #' @param name Result name.
-#' @param ... Not used
 setGeneric( "findResType", 
         function( object, name )
         {
@@ -348,6 +347,8 @@ setGeneric( "getWeatherRecords",
 #' 
 #' @param object A WeaAna object.
 #' @param yrange Year range.
+#' @param vars Variable
+#' @param ... Other arguments
 #' @examples
 #' library(weaana)
 #' data( "WeatherRecordsDemo" ) 
@@ -395,9 +396,9 @@ setMethod( f = "getWeatherRecords",
                 {
                     if ( "all" %in% vars | fixed.vars[j] %in% vars )
                     {
-                        if (length(slot(s.record, fixed.vars[j])) > 0 )
+                        if (length(methods::slot(s.record, fixed.vars[j])) > 0 )
                         {
-                            site.res[[fixed.vars[j]]] <- slot(s.record, fixed.vars[j])
+                            site.res[[fixed.vars[j]]] <- methods::slot(s.record, fixed.vars[j])
                         }
                     }
                 }
@@ -683,17 +684,14 @@ setMethod( f = "siteNum",
 #' @param name Variable name which will return. All parameters will return if NULL
 #' @examples
 #' library(weaana)
-#' data( "WeatherRecordsDemo" ) 
+#' data("records") 
 #' waGetPara( "yrange" )
 #' # for lower level parameters
 #' waGetPara( "extreme$maxt$hot.day$value" )
 #' @export
 waGetPara <- function( name = NULL )
 {
-    if ( !exists( "weaana.glb.para" ) )
-    {
-        assign( "weaana.glb.para", defaultPara(), envir = .GlobalEnv )
-    }
+    weaana.glb.para <- defaultPara()
 
     if ( is.null( name ) )
     {
@@ -722,34 +720,8 @@ waGetPara <- function( name = NULL )
 #' @export
 setPara <- function( ... )
 {
-    if ( !exists( "weaana.glb.para" ) )
-    {
-        assign( "weaana.glb.para", defaultPara(), envir = .GlobalEnv )
-    }
-    
-    c.args <- list( ... )
-    name.args <- attr( c.args, "name")
-    
-    if ( is.null( name.args ) )
-    {
-        warning( "Nothing to do." )
-        return()
-    }
-    for ( i in 1:length( c.args ) )
-    {
-        if ( !nchar( name.args[i] ) )
-        {
-            warning( paste( "No name for value ", c.args[[i]], ", skip it.", sep = "" ) )
-            next()
-        }
-        if ( is.null( weaana.glb.para[[name.args[i]]] ) )
-        {
-            warning( paste( name.args[i], " is not existed, skip it.", sep = "" ) )
-            next()
-        }
-        weaana.glb.para[[name.args[i]]] <- c.args[[i]]
-    }
-    assign( "weaana.glb.para", weaana.glb.para, envir = .GlobalEnv )
+    settings::stop_if_reserved(...)
+    WA_OPTIONS(...)
 }
 
 
@@ -760,7 +732,7 @@ setPara <- function( ... )
 #' @export
 weaanaVersion <- function( )
 {
-    infor <- sessionInfo() 
+    infor <- utils::sessionInfo() 
     
     if ( is.null( infor$otherPkgs ) )
     {

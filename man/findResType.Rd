@@ -10,8 +10,6 @@ findResType(object, name)
 \item{object}{A WeaAna object.}
 
 \item{name}{Result name.}
-
-\item{...}{Not used}
 }
 \description{
 Get result type by name

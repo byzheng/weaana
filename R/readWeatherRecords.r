@@ -37,7 +37,6 @@ readWeatherRecords <- function(dataFiles = NULL,
                                 load.later = FALSE, 
                                 ...)
 {
-    library(methods)
     fileLists <- fileList(dataFiles, dataFolders, dataFormat)
     records <- NULL
     if(load.later)
@@ -46,17 +45,17 @@ readWeatherRecords <- function(dataFiles = NULL,
         num <- 0
         for (i in seq(along = fileLists))
         {
-            site.record <- new("WeaAnaSite", 
+            site.record <- methods::new("WeaAnaSite", 
                     file.path = fileLists[i],
                     data.format = dataFormat,
                     load.later = TRUE)
             sites.records <- c(sites.records, newPointer(site.record))
             num <- num + 1
         }
-        result <- c(NULL, newPointer(new("result", 
+        result <- c(NULL, newPointer(methods::new("result", 
                                 name = as.character(NULL), 
                                 type = as.character(NULL)))) 
-        records <- new("WeaAna", num = num,
+        records <- methods::new("WeaAna", num = num,
                 records = sites.records,
                 result = result)
     } else
@@ -69,10 +68,10 @@ readWeatherRecords <- function(dataFiles = NULL,
             sites.records <- c(sites.records, newPointer(site.record))
             num <- num + 1
         }
-        result <- c(NULL, newPointer(new("result", 
+        result <- c(NULL, newPointer(methods::new("result", 
                                 name = as.character(NULL), 
                                 type = as.character(NULL)))) 
-        records <- new("WeaAna", 
+        records <- methods::new("WeaAna", 
                 num = num,
                 records = sites.records,
                 result = result)
@@ -182,8 +181,8 @@ readSiteAPSIM <- function(filename)
     } 
     
     start.line <- grep("^year", temp)
-    a <- read.table(filename, head = FALSE, sep = "", skip = start.line + 1,
-            col.names = scan(filename, "", sep = "", skip = start.line - 1, nline = 1,
+    a <- utils::read.table(filename, head = FALSE, sep = "", skip = start.line + 1,
+            col.names = scan(filename, "", sep = "", skip = start.line - 1, nlines = 1,
                 quiet = TRUE),
             as.is = TRUE)
     if (!is.null(a$pan))
@@ -205,7 +204,7 @@ readSiteAPSIM <- function(filename)
     {
         extra$vpd <- a$vpd
     }
-    records <- new("WeaAnaSite", name  =  station.name,
+    records <- methods::new("WeaAnaSite", name  =  station.name,
             number  =  station.number,
             latitude  =  latitude,
             longitude  =  longitude,
@@ -254,7 +253,7 @@ readSiteRDATA <- function(filename)
         }
         site.record <- getWeaAnaSiteByPos(temp.records, 1)
         
-        record <- new("WeaAnaSite", name = site.record$value@name,
+        record <- methods::new("WeaAnaSite", name = site.record$value@name,
                 number = site.record$value@number,
                 latitude = site.record$value@latitude,
                 longitude = site.record$value@longitude,
@@ -287,8 +286,7 @@ readSiteRDATA <- function(filename)
 #' 
 #' @rdname readWeatherRecords
 readSiteGHCN <- function(filename, ...)
-{    
-    library(reshape2)
+{   
     
     others <- list(...)
     temp <- readLines(filename)
@@ -316,20 +314,19 @@ readSiteGHCN <- function(filename, ...)
     ratio <- matrix(rep(traits_map$ratio[pos], 
         each = nrow(value)), nrow = nrow(value))
     value <- value * ratio
-    value <- melt(value)
+    value <- reshape2::melt(value)
     names(value) <- c('day', 'pos', 'value')
     value$year <- year[value$pos]
     month <- month[value$pos]
     value$trait <- trait[value$pos]
     date <- ISOdate(value$year, 
         month, value$day)
-    library(lubridate)
-    value$day <- yday(date)
+    value$day <- lubridate::yday(date)
     value <- value[!is.na(value$day),]
-    weather <- dcast(value, year + day ~ trait, value.var = 'value')
+    weather <- reshape2::dcast(value, year + day ~ trait, value.var = 'value')
     
 
-    records <- new("WeaAnaSite", name = others$Name,
+    records <- methods::new("WeaAnaSite", name = others$Name,
             number  =  others$Number,
             latitude  =  others$Latitude,
             longitude  =  others$Longitude,
@@ -369,7 +366,6 @@ createWeaAna <- function(mets)
         mets <- as.list(NULL)
         mets[[1]] <- tmp
     }
-    library(methods)
     tmp <- mets
     site_record <- NULL
     result <- NULL
@@ -416,7 +412,7 @@ createWeaAna <- function(mets)
             mets$tav <- tav
             mets$amp <- amp
         }
-        site_rd <- new("WeaAnaSite", name = as.character(mets$Name),
+        site_rd <- methods::new("WeaAnaSite", name = as.character(mets$Name),
             number = as.character(mets$Number),
             latitude = mets$Latitude,
             longitude = mets$Longitude,
@@ -437,12 +433,12 @@ createWeaAna <- function(mets)
             load.later = FALSE)
         
         site_record <- c(site_record, newPointer(site_rd))
-        result <- c(result, newPointer(new("result", 
+        result <- c(result, newPointer(methods::new("result", 
             name = as.character(NULL), 
             type = as.character(NULL))))
     }
     
-    records <- new("WeaAna", 
+    records <- methods::new("WeaAna", 
             num = length(tmp),
             records = site_record,
             result = result)

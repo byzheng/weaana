@@ -4,11 +4,31 @@
 # *
 
 
+#' Transfer of sign - from FORTRAN.
+#' The result is of the same type and kind as a. Its value is the abs(a) of a,
+#' if b is greater than or equal positive zero; and -abs(a), if b is less than
+#' or equal to negative zero.
+#' Example a = sign_apsim (30,-2) ! a is assigned the value -30
+#' 
+#' @param a value 1
+#' @param b value 2
+sign_apsim <- function( a, b )
+{
+    if ( b >= 0 )
+    {
+        return( abs( a ) )
+    } else
+    {
+        return( -abs(a) )
+    }
+}
+
 # Some utility functions for weather analysis
-#' Significantly t-test with autocorrelation for time serial data 
+#' Significantly t-test with auto-correlation for time serial data 
 #' 
 #' Method is presented by Santer et al. 2000
-#' @param x A vector of time serial data
+#' @param y A vector of time serial data
+#' @param slope Whether export slope
 #' @export
 ttest_ts <- function(y, slope = NULL)
 {
@@ -19,18 +39,18 @@ ttest_ts <- function(y, slope = NULL)
         x <- seq(along = y)
         if (is.null(slope))
         {
-            slope <- cor(x, y) * sd(y)/sd(x)
+            slope <- stats::cor(x, y) * stats::sd(y)/stats::sd(x)
         }
        
         sb_m <- sqrt(sum((x - mean(x)) ^ 2))
         inercept <- (sum(y) - slope * sum(x)) / num
         et_x <- y - (inercept + slope * x)
-        ne_x <- cor(et_x[-1], et_x[-(num)])
+        ne_x <- stats::cor(et_x[-1], et_x[-(num)])
         ne_x <- num * (1 - ne_x) / (1 + ne_x)
         se_x <- sqrt((1 / (ne_x - 2)) * sum(et_x * et_x, na.rm = TRUE))
         sb_x <- se_x / sb_m
         tb_x <- abs(slope / sb_x)
-        p_x <- (1 - pt(tb_x, df = ne_x - 2)) * 2
+        p_x <- (1 - stats::pt(tb_x, df = ne_x - 2)) * 2
         return (p_x)
     } else 
     {
@@ -79,9 +99,7 @@ spatial <- function(x, slope = TRUE, aspect = TRUE)
     dz_dy <- ((f_g + 2 * f_h + f_i) - (f_a + 2 * f_b + f_c)) / (8 * y_cellsize)
     
     slope_v <- sqrt(dz_dx * dz_dx + dz_dy * dz_dy)
-    # slope_v <- atan(slope_v) * 180 / pi
-    hist(slope_v)
-    
+
     dimnames(slope_v) <- x_dimnames
     aspect_v <- (180 / pi) * atan2(dz_dy, -dz_dx) 
     dimnames(aspect_v) <- x_dimnames
@@ -95,7 +113,7 @@ spatial <- function(x, slope = TRUE, aspect = TRUE)
     {
         return (aspect_v)
     }
-    return (NULl)
+    return (NULL)
 }
 
 #' The time elapsed in hours between the specified sun angle 

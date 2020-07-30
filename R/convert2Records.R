@@ -30,7 +30,7 @@ convert2Records <- function( infor, records )
     extra <- NULL
     extra$avgt <- ( a$maxt + a$mint ) / 2
     extra$vpd <- vpd.apsim( a$maxt, a$mint )
-    record <- new( "WeaAnaSite", name = infor$Name,
+    record <- methods::new( "WeaAnaSite", name = infor$Name,
             number = infor$Number,
             latitude = as.numeric( infor$Latitude ),
             longitude = as.numeric( infor$Longitude ),
@@ -48,10 +48,10 @@ convert2Records <- function( infor, records )
             data.format = as.character( NA ),
             load.later = FALSE )
     
-    result <- c(NULL, newPointer( new( "result", 
+    result <- c(NULL, newPointer( methods::new( "result", 
                             name = as.character( NULL ), 
                             type = as.character( NULL ) ) ) ) 
-    records <- new( "WeaAna", 
+    records <- methods::new( "WeaAna", 
             num = 1,
             records = c( NULL, newPointer( record ) ),
             result = result )

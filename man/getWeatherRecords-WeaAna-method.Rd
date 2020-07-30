@@ -10,6 +10,10 @@
 \item{object}{A WeaAna object.}
 
 \item{yrange}{Year range.}
+
+\item{vars}{Variable}
+
+\item{...}{Other arguments}
 }
 \description{
 Get all weather records by year range

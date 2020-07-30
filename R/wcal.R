@@ -27,9 +27,9 @@ setGeneric( "wcal",
 #' @param var.name Variable name is used if \code{FUN} is not NULL.
 #' @examples
 #' library(weaana)
-#' data( "WeatherRecordsDemo" ) 
+#' data( "records" ) 
 #' # Daily mean temperature
-#' wcal( records, avgt = "( maxt + mint ) / 2" )
+#' wcal( records, avgt2 = "( maxt + mint ) / 2" )
 #' # Moving average temperature
 #' wcal( records, FUN = mov.avg, var.args = "avgt", k = 5, shift = "begin", var.name = "mov.avg" )
 #' @export

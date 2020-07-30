@@ -11,9 +11,11 @@ diurnalT(maxt, mint, doy, hour, latitude, A = 1.5, B = 4, C = 1)
 
 \item{mint}{minimum daily temperature}
 
+\item{doy}{day of year}
+
 \item{hour}{hour from 1 to 24}
 
-\item{latitude}{latitude in radians}
+\item{latitude}{latitude in radials}
 
 \item{A}{is the time lag in temperature after noon}
 
@@ -24,7 +26,7 @@ diurnalT(maxt, mint, doy, hour, latitude, A = 1.5, B = 4, C = 1)
 \description{
 Calculate the diurnal variation in air temperature.
 Parton WJ, Logan JA (1981) A model for diurnal variation in soil and air temperature. 
-Agricultural Meteorology, 23, 205㤼㸶216.
+Agricultural Meteorology, 23, 205?216.
 Codes copied from APSIM Utilities.cpp
 }
 \examples{

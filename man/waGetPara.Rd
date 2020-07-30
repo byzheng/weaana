@@ -14,7 +14,7 @@ Get parameters
 }
 \examples{
 library(weaana)
-data( "WeatherRecordsDemo" ) 
+data("records") 
 waGetPara( "yrange" )
 # for lower level parameters
 waGetPara( "extreme$maxt$hot.day$value" )

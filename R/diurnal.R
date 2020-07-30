@@ -7,14 +7,16 @@
 
 #' Calculate the diurnal variation in air temperature with Parton and Logan, 1981
 #'
+#' @description 
 #' Calculate the diurnal variation in air temperature.
 #' Parton WJ, Logan JA (1981) A model for diurnal variation in soil and air temperature. 
-#' Agricultural Meteorology, 23, 205–216.
+#' Agricultural Meteorology, 23, 205?216.
 #' Codes copied from APSIM Utilities.cpp
 #' @param maxt maximum daily temperature
 #' @param mint minimum daily temperature
+#' @param doy day of year
 #' @param hour hour from 1 to 24
-#' @param latitude latitude in radians
+#' @param latitude latitude in radials
 #' @param A is the time lag in temperature after noon
 #' @param B is coef that controls temperature decrease at night
 #' @param C is the time lag for min temperature after sunrise
