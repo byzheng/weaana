@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">weaana</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.4507</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -87,21 +87,14 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/vignette.html">Weather analysis</a>
-    </li>
-  </ul>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/byzheng/weaana/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -116,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get site information</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/byzheng/weaana/blob/master/R/getter.R'><code>R/getter.R</code></a></small>
     <div class="hidden name"><code>siteInfor-WeaAna-method.Rd</code></div>
     </div>
 
@@ -142,9 +135,8 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'>weaana</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>( <span class='st'>"WeatherRecordsDemo"</span> ) 
-<span class='fu'><a href='siteInfor.html'>siteInfor</a></span>( <span class='kw'>records</span> )</div><div class='output co'>#&gt;                  Name  Number Latitude Longitude
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://weaana.bangyou.me'>weaana</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>( <span class='st'>"WeatherRecordsDemo"</span> ) </div><div class='output co'>#&gt; <span class='warning'>Warning: data set ‘WeatherRecordsDemo’ not found</span></div><div class='input'><span class='fu'><a href='siteInfor.html'>siteInfor</a></span>( <span class='kw'>records</span> )</div><div class='output co'>#&gt;                  Name  Number Latitude Longitude
 #&gt; 1 DEMO Weather Site 1 0000001      -25       135
 #&gt; 2 DEMO Weather Site 2 0000002      -25       130</div><div class='input'><span class='fu'><a href='siteInfor.html'>siteInfor</a></span>( <span class='kw'>records</span>, load.now = <span class='fl'>TRUE</span> )</div><div class='output co'>#&gt;                  Name  Number Latitude Longitude
 #&gt; 1 DEMO Weather Site 1 0000001      -25       135

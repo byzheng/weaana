@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Show basic information of class WeaAna — show,WeaAna-method • weaana</title>
+<title>Demo weather records — records • weaana</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Show basic information of class WeaAna — show,WeaAna-method" />
-<meta property="og:description" content="Show the name, number, latitude, longitude of all weather stations." />
+<meta property="og:title" content="Demo weather records — records" />
+<meta property="og:description" content="Demo weather records" />
 
 
 
@@ -108,35 +108,22 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Show basic information of class WeaAna</h1>
-    <small class="dont-index">Source: <a href='https://github.com/byzheng/weaana/blob/master/R/showWeaAna.R'><code>R/showWeaAna.R</code></a></small>
-    <div class="hidden name"><code>show-WeaAna-method.Rd</code></div>
+    <h1>Demo weather records</h1>
+    <small class="dont-index">Source: <a href='https://github.com/byzheng/weaana/blob/master/R/demo_data.R'><code>R/demo_data.R</code></a></small>
+    <div class="hidden name"><code>records.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Show the name, number, latitude, longitude of all weather stations.</p>
+    <p>Demo weather records</p>
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for WeaAna</span>
-<span class='fu'>show</span>(<span class='kw'>object</span>)</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>object</th>
-      <td><p>WeaAna objects</p></td>
-    </tr>
-    </table>
+    <pre class="usage"><span class='kw'>records</span></pre>
 
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://weaana.bangyou.me'>weaana</a></span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>( <span class='st'>"WeatherRecordsDemo"</span> ) </div><div class='output co'>#&gt; <span class='warning'>Warning: data set ‘WeatherRecordsDemo’ not found</span></div><div class='input'><span class='fu'>show</span>( <span class='kw'>records</span> )</div><div class='output co'>#&gt;                  Name  Number Latitude Longitude
-#&gt; 1 DEMO Weather Site 1 0000001      -25       135
-#&gt; 2 DEMO Weather Site 2 0000002      -25       130</div><div class='input'><span class='kw'>records</span></div><div class='output co'>#&gt;                  Name  Number Latitude Longitude
-#&gt; 1 DEMO Weather Site 1 0000001      -25       135
-#&gt; 2 DEMO Weather Site 2 0000002      -25       130</div></pre>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>An object of class <code>WeaAna</code> of length 1.</p>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

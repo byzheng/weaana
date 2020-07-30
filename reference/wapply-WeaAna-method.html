@@ -74,7 +74,7 @@ and different parameters for all levels in a certain period." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">weaana</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.4507</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -89,21 +89,14 @@ and different parameters for all levels in a certain period." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/vignette.html">Weather analysis</a>
-    </li>
-  </ul>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/byzheng/weaana/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -118,7 +111,7 @@ and different parameters for all levels in a certain period." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Statistics weather records by a certain period and function</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/byzheng/weaana/blob/master/R/wapply.R'><code>R/wapply.R</code></a></small>
     <div class="hidden name"><code>wapply-WeaAna-method.Rd</code></div>
     </div>
 
@@ -203,8 +196,8 @@ Each argument will be replicated to same length as level number which
 determines by period. Then, each level will be passed to different parameter.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'>weaana</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>( <span class='st'>"WeatherRecordsDemo"</span> ) 
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://weaana.bangyou.me'>weaana</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>( <span class='st'>"records"</span> ) 
 <span class='co'># calculate yearly mean temperature</span>
 <span class='fu'><a href='wapply.html'>wapply</a></span>( <span class='kw'>records</span>, vars = <span class='st'>"avgt"</span>, period = <span class='st'>"year"</span>, FUN = <span class='kw'>mean</span> )</div><div class='output co'>#&gt;                    Name  Number Latitude Longitude year   result
 #&gt; 1   DEMO Weather Site 1 0000001      -25       135 1957 20.27616
