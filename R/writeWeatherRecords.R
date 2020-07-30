@@ -64,10 +64,10 @@ setMethod(f = 'writeWeatherRecords',
             pos <- NULL
             for (j in seq(along = var_cols))
             {
-                if (length(slot(records, var_cols[j])) > 0)
+                if (length(methods::slot(records, var_cols[j])) > 0)
                 {
                     values[[var_cols[j]]] <- format(
-                        slot(records, var_cols[j]), 
+                        methods::slot(records, var_cols[j]), 
                         width = var_width[j], justify = 'right',
                         nsmall = nsmall[j])
                     pos <- c(pos, j)
