@@ -5,12 +5,14 @@
 \alias{writeWeatherRecords,WeaAna-method}
 \title{Write weather records into file}
 \usage{
-\S4method{writeWeatherRecords}{WeaAna}(object, file)
+\S4method{writeWeatherRecords}{WeaAna}(object, file, cols = NULL)
 }
 \arguments{
 \item{object}{A WeaAna object.}
 
 \item{file}{Path of output file.}
+
+\item{cols}{Columns to export}
 }
 \description{
 Write weather records into file

@@ -19,10 +19,11 @@ setGeneric('writeWeatherRecords',
 #' @docType methods
 #' @param object A WeaAna object.
 #' @param file Path of output file.
+#' @param cols Columns to export
 #' @export
 setMethod(f = 'writeWeatherRecords', 
     signature = c(object = 'WeaAna'),
-    definition = function(object, file)
+    definition = function(object, file, cols = NULL)
     {
         if (object@num != length(file))
         {
@@ -34,6 +35,15 @@ setMethod(f = 'writeWeatherRecords',
         var_width <- c(4, 5, 6, 6, 6, 6, 6, 6, 7)
         nsmall <- c(0, 0, 0, 0, 0, 0, 0, 0, 0)
         var_cols <- c('year', 'day', 'radn', 'maxt', 'mint', 'rain', 'evap', 'vp', 'code')
+        if (!is.null(cols)) {
+            cols <- unique(c('year', 'day', cols))
+            pos <- var_cols %in% cols
+            var_cols <- var_cols[pos]
+            var_name <- var_name[pos]
+            var_unit <- var_unit[pos]
+            var_width <- var_width[pos]
+            nsmall <- nsmall[pos]
+        }
         for (i in seq(length = object@num))
         {
             records <- getWeaAnaSiteByPos(object, i)
