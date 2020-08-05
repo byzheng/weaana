@@ -36,8 +36,8 @@ Currently, WeaAna package supports weather records files with APSIM format with 
 Function “readWeatherRecords” is used to read weather records from files. For example:
 
 ```{r}
-records <- readWeatherRecords(dataFolders = system.file("data", package = "weaana"))
-met_files <- list.files(system.file("data", package = "weaana"), "*.met", full.names = TRUE)
+records <- readWeatherRecords(dataFolders = system.file("extdata", package = "weaana"))
+met_files <- list.files(system.file("extdata", package = "weaana"), "*.met", full.names = TRUE)
 records <- readWeatherRecords(met_files)
 records
 ```
@@ -82,19 +82,6 @@ Function “siteInfor” is returned the same result, but is a data frame which 
 siteInfor(records)
 ```
 
-# Station position information
-
-Function “sites2KML” convert site positions to KML file. The station names could not be output with “name = FALSE”.
-```{r}
-#sites2KML(records, file = "sites.kml", name = FALSE)
-```
-
-Function “plotSites” shows positions of all weather stations in a map (Figure 4.1).
-```{r}
-plotSites(records, lines = ozRegion(), sitename = FALSE, col = "red", pch = 24)
-```
-
-The default map is Australia map from oz package. The map can be specified by parameter “lines” which is a list of latitude and longitude of all lines. The site name, colour and symbol style could be set by other parameters.
 
 
 # Weather analysis
@@ -103,7 +90,7 @@ Function “wcal” is a flexible function to calculate weather variables throug
 
 Function “wcal” is string formula mode if FUN is NULL. String formula which contains variable name would be explained for each site. The argument name will be stored as variable names. The following codes are used to calculate average temperature.
 ```{r}
-data("WeatherRecordsDemo")
+data("records")
 wcal(records, avgt2 = "(maxt + mint)/2")
 ```
 
