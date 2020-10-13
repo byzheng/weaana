@@ -81,12 +81,6 @@ and different parameters for all levels in a certain period." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -134,18 +128,18 @@ and different parameters for all levels in a certain period.</p>
     </div>
 
     <pre class="usage"><span class='co'># S4 method for WeaAna</span>
-<span class='fu'><a href='wapply.html'>wapply</a></span>(
-  <span class='kw'>object</span>,
-  <span class='kw'>vars</span>,
-  <span class='kw'>period</span>,
-  <span class='kw'>FUN</span>,
-  ARGS = <span class='kw'>NULL</span>,
-  site.ARGS = <span class='kw'>NULL</span>,
-  res.name = <span class='st'>"result"</span>,
-  yrange = <span class='fu'><a href='waGetPara.html'>waGetPara</a></span>(<span class='st'>"yrange"</span>),
-  as.data.frame = <span class='fl'>FALSE</span>,
-  extra = <span class='kw'>NULL</span>
-)</pre>
+<span class='fu'><a href='wapply.html'>wapply</a></span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  <span class='va'>vars</span>,
+  <span class='va'>period</span>,
+  <span class='va'>FUN</span>,
+  ARGS <span class='op'>=</span> <span class='cn'>NULL</span>,
+  site.ARGS <span class='op'>=</span> <span class='cn'>NULL</span>,
+  res.name <span class='op'>=</span> <span class='st'>"result"</span>,
+  yrange <span class='op'>=</span> <span class='fu'><a href='waGetPara.html'>waGetPara</a></span><span class='op'>(</span><span class='st'>"yrange"</span><span class='op'>)</span>,
+  as.data.frame <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  extra <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -208,10 +202,11 @@ Each argument will be replicated to same length as level number which
 determines by period. Then, each level will be passed to different parameter.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://weaana.bangyou.me'>weaana</a></span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>( <span class='st'>"records"</span> ) 
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://weaana.bangyou.me/'>weaana</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span> <span class='st'>"records"</span> <span class='op'>)</span> 
 <span class='co'># calculate yearly mean temperature</span>
-<span class='fu'><a href='wapply.html'>wapply</a></span>( <span class='kw'>records</span>, vars = <span class='st'>"avgt"</span>, period = <span class='st'>"year"</span>, FUN = <span class='kw'>mean</span> )</div><div class='output co'>#&gt;                    Name  Number Latitude Longitude year   result
+<span class='fu'><a href='wapply.html'>wapply</a></span><span class='op'>(</span> <span class='va'>records</span>, vars <span class='op'>=</span> <span class='st'>"avgt"</span>, period <span class='op'>=</span> <span class='st'>"year"</span>, FUN <span class='op'>=</span> <span class='va'>mean</span> <span class='op'>)</span>
+</div><div class='output co'>#&gt;                    Name  Number Latitude Longitude year   result
 #&gt; 1   DEMO Weather Site 1 0000001      -25       135 1957 20.27616
 #&gt; 2   DEMO Weather Site 1 0000001      -25       135 1958 20.42938
 #&gt; 3   DEMO Weather Site 1 0000001      -25       135 1959 19.57555
@@ -318,7 +313,8 @@ determines by period. Then, each level will be passed to different parameter.</p
 #&gt; 104 DEMO Weather Site 2 0000002      -25       130 2007 20.46884
 #&gt; 105 DEMO Weather Site 2 0000002      -25       130 2008 19.33996
 #&gt; 106 DEMO Weather Site 2 0000002      -25       130 2009 20.58658</div><div class='input'><span class='co'># yealy total rainfall</span>
-<span class='fu'><a href='wapply.html'>wapply</a></span>( <span class='kw'>records</span>, vars = <span class='st'>"rain"</span>, period = <span class='st'>"year"</span>, FUN = <span class='kw'>sum</span> )</div><div class='output co'>#&gt;                    Name  Number Latitude Longitude year result
+<span class='fu'><a href='wapply.html'>wapply</a></span><span class='op'>(</span> <span class='va'>records</span>, vars <span class='op'>=</span> <span class='st'>"rain"</span>, period <span class='op'>=</span> <span class='st'>"year"</span>, FUN <span class='op'>=</span> <span class='va'>sum</span> <span class='op'>)</span>
+</div><div class='output co'>#&gt;                    Name  Number Latitude Longitude year result
 #&gt; 1   DEMO Weather Site 1 0000001      -25       135 1957 1446.5
 #&gt; 2   DEMO Weather Site 1 0000001      -25       135 1958 1837.0
 #&gt; 3   DEMO Weather Site 1 0000001      -25       135 1959 1934.6
@@ -425,7 +421,8 @@ determines by period. Then, each level will be passed to different parameter.</p
 #&gt; 104 DEMO Weather Site 2 0000002      -25       130 2007 1498.9
 #&gt; 105 DEMO Weather Site 2 0000002      -25       130 2008 1902.5
 #&gt; 106 DEMO Weather Site 2 0000002      -25       130 2009 1459.7</div><div class='input'><span class='co'># yearly mean temperature</span>
-<span class='fu'><a href='wapply.html'>wapply</a></span>( <span class='kw'>records</span>, vars = <span class='st'>"avgt"</span>, period = <span class='st'>"year"</span>, FUN = <span class='kw'>mean</span> )</div><div class='output co'>#&gt;                    Name  Number Latitude Longitude year   result
+<span class='fu'><a href='wapply.html'>wapply</a></span><span class='op'>(</span> <span class='va'>records</span>, vars <span class='op'>=</span> <span class='st'>"avgt"</span>, period <span class='op'>=</span> <span class='st'>"year"</span>, FUN <span class='op'>=</span> <span class='va'>mean</span> <span class='op'>)</span>
+</div><div class='output co'>#&gt;                    Name  Number Latitude Longitude year   result
 #&gt; 1   DEMO Weather Site 1 0000001      -25       135 1957 20.27616
 #&gt; 2   DEMO Weather Site 1 0000001      -25       135 1958 20.42938
 #&gt; 3   DEMO Weather Site 1 0000001      -25       135 1959 19.57555
@@ -532,7 +529,8 @@ determines by period. Then, each level will be passed to different parameter.</p
 #&gt; 104 DEMO Weather Site 2 0000002      -25       130 2007 20.46884
 #&gt; 105 DEMO Weather Site 2 0000002      -25       130 2008 19.33996
 #&gt; 106 DEMO Weather Site 2 0000002      -25       130 2009 20.58658</div><div class='input'><span class='co'># monthly mean temperature</span>
-<span class='fu'><a href='wapply.html'>wapply</a></span>( <span class='kw'>records</span>, vars = <span class='st'>"avgt"</span>, period = <span class='st'>"month"</span>, FUN = <span class='kw'>mean</span> )</div><div class='output co'>#&gt;                   Name  Number Latitude Longitude month   result
+<span class='fu'><a href='wapply.html'>wapply</a></span><span class='op'>(</span> <span class='va'>records</span>, vars <span class='op'>=</span> <span class='st'>"avgt"</span>, period <span class='op'>=</span> <span class='st'>"month"</span>, FUN <span class='op'>=</span> <span class='va'>mean</span> <span class='op'>)</span>
+</div><div class='output co'>#&gt;                   Name  Number Latitude Longitude month   result
 #&gt; 1  DEMO Weather Site 1 0000001      -25       135     1 25.26360
 #&gt; 2  DEMO Weather Site 1 0000001      -25       135     2 24.94546
 #&gt; 3  DEMO Weather Site 1 0000001      -25       135     3 23.49793
@@ -557,7 +555,8 @@ determines by period. Then, each level will be passed to different parameter.</p
 #&gt; 22 DEMO Weather Site 2 0000002      -25       130    10 20.60700
 #&gt; 23 DEMO Weather Site 2 0000002      -25       130    11 22.87745
 #&gt; 24 DEMO Weather Site 2 0000002      -25       130    12 24.67176</div><div class='input'><span class='co'># 10 days mean temperature</span>
-<span class='fu'><a href='wapply.html'>wapply</a></span>( <span class='kw'>records</span>, vars = <span class='st'>"avgt"</span>, period = <span class='fl'>10</span>, FUN = <span class='kw'>mean</span> )</div><div class='output co'>#&gt;                   Name  Number Latitude Longitude X10   result
+<span class='fu'><a href='wapply.html'>wapply</a></span><span class='op'>(</span> <span class='va'>records</span>, vars <span class='op'>=</span> <span class='st'>"avgt"</span>, period <span class='op'>=</span> <span class='fl'>10</span>, FUN <span class='op'>=</span> <span class='va'>mean</span> <span class='op'>)</span>
+</div><div class='output co'>#&gt;                   Name  Number Latitude Longitude X10   result
 #&gt; 1  DEMO Weather Site 1 0000001      -25       135   1 24.94175
 #&gt; 2  DEMO Weather Site 1 0000001      -25       135   2 25.28580
 #&gt; 3  DEMO Weather Site 1 0000001      -25       135   3 25.52953
@@ -632,10 +631,11 @@ determines by period. Then, each level will be passed to different parameter.</p
 #&gt; 72 DEMO Weather Site 2 0000002      -25       130  35 24.31769
 #&gt; 73 DEMO Weather Site 2 0000002      -25       130  36 24.74264
 #&gt; 74 DEMO Weather Site 2 0000002      -25       130  37 25.62068</div><div class='input'><span class='co'># yearly mean temperature, total raifall and mean radiation.</span>
-<span class='fu'><a href='wapply.html'>wapply</a></span>( <span class='kw'>records</span>, vars = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>( <span class='st'>"avgt"</span>, <span class='st'>"rain"</span>, <span class='st'>"radn"</span> ), 
-        period = <span class='st'>"year"</span>, 
-        FUN = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>( <span class='kw'>mean</span>, <span class='kw'>sum</span> ), 
-        res.name = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>( <span class='st'>"mean.avgt"</span>, <span class='st'>"total.rain"</span>, <span class='st'>"mean.radn"</span> ) )</div><div class='output co'>#&gt; $mean.avgt
+<span class='fu'><a href='wapply.html'>wapply</a></span><span class='op'>(</span> <span class='va'>records</span>, vars <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='st'>"avgt"</span>, <span class='st'>"rain"</span>, <span class='st'>"radn"</span> <span class='op'>)</span>, 
+        period <span class='op'>=</span> <span class='st'>"year"</span>, 
+        FUN <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='va'>mean</span>, <span class='va'>sum</span> <span class='op'>)</span>, 
+        res.name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='st'>"mean.avgt"</span>, <span class='st'>"total.rain"</span>, <span class='st'>"mean.radn"</span> <span class='op'>)</span> <span class='op'>)</span>
+</div><div class='output co'>#&gt; $mean.avgt
 #&gt;                    Name  Number Latitude Longitude year mean.avgt
 #&gt; 1   DEMO Weather Site 1 0000001      -25       135 1957  20.27616
 #&gt; 2   DEMO Weather Site 1 0000001      -25       135 1958  20.42938
@@ -962,21 +962,22 @@ determines by period. Then, each level will be passed to different parameter.</p
 #&gt; 105 DEMO Weather Site 2 0000002      -25       130 2008  18.17760
 #&gt; 106 DEMO Weather Site 2 0000002      -25       130 2009  19.05479
 #&gt; </div><div class='input'><span class='co'># calculate thermal time from last frost day to first heat day for year range 1960 to 2009</span>
-<span class='kw'>last.frost</span> <span class='op'>&lt;-</span> <span class='fu'><a href='lastFrostDay.html'>lastFrostDay</a></span>( <span class='kw'>records</span>, yrange = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>( <span class='fl'>1960</span>, <span class='fl'>2009</span> ) )
-<span class='kw'>first.heat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='firstHeatDay.html'>firstHeatDay</a></span>( <span class='kw'>records</span>, yrange = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>( <span class='fl'>1960</span>, <span class='fl'>2009</span> ) )
-<span class='fu'><a href='wapply.html'>wapply</a></span>( <span class='kw'>records</span>, vars = <span class='st'>"avgt"</span>, period = <span class='st'>"year"</span>, FUN = <span class='fu'>function</span> ( <span class='kw'>x</span>, <span class='kw'>start</span>, <span class='kw'>end</span>, <span class='kw'>base</span> = <span class='fl'>0</span> )
-{
-            <span class='co'>if</span> ( <span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>( <span class='kw'>start</span> ) <span class='op'>|</span> <span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>( <span class='kw'>end</span> ) )
-            {
-                <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>( <span class='fl'>NA</span> )
-            } <span class='co'>else</span>
-            {
-                <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='kw'>x</span>[ <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>( <span class='kw'>start</span>, <span class='kw'>end</span> )]
-                <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='kw'>x</span>[ <span class='kw'>x</span> <span class='op'>&gt;</span> <span class='kw'>base</span> ] <span class='op'>-</span> <span class='kw'>base</span>
-                <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span>( <span class='kw'>x</span>, na.rm = <span class='fl'>TRUE</span> ) )
-            }
-        }, ARGS = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( start = <span class='kw'>last.frost</span>[,<span class='fl'>6</span>], end = <span class='kw'>first.heat</span>[,<span class='fl'>6</span>] ) ), 
-        res.name = <span class='st'>"tt"</span>, yrange = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>( <span class='fl'>1960</span>, <span class='fl'>2009</span> ) )</div><div class='output co'>#&gt;                  Name  Number Latitude Longitude year     tt
+<span class='va'>last.frost</span> <span class='op'>&lt;-</span> <span class='fu'><a href='lastFrostDay.html'>lastFrostDay</a></span><span class='op'>(</span> <span class='va'>records</span>, yrange <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='fl'>1960</span>, <span class='fl'>2009</span> <span class='op'>)</span> <span class='op'>)</span>
+<span class='va'>first.heat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='firstHeatDay.html'>firstHeatDay</a></span><span class='op'>(</span> <span class='va'>records</span>, yrange <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='fl'>1960</span>, <span class='fl'>2009</span> <span class='op'>)</span> <span class='op'>)</span>
+<span class='fu'><a href='wapply.html'>wapply</a></span><span class='op'>(</span> <span class='va'>records</span>, vars <span class='op'>=</span> <span class='st'>"avgt"</span>, period <span class='op'>=</span> <span class='st'>"year"</span>, FUN <span class='op'>=</span> <span class='kw'>function</span> <span class='op'>(</span> <span class='va'>x</span>, <span class='va'>start</span>, <span class='va'>end</span>, <span class='va'>base</span> <span class='op'>=</span> <span class='fl'>0</span> <span class='op'>)</span>
+<span class='op'>{</span>
+            <span class='kw'>if</span> <span class='op'>(</span> <span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span> <span class='va'>start</span> <span class='op'>)</span> <span class='op'>|</span> <span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span> <span class='va'>end</span> <span class='op'>)</span> <span class='op'>)</span>
+            <span class='op'>{</span>
+                <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span> <span class='cn'>NA</span> <span class='op'>)</span>
+            <span class='op'>}</span> <span class='kw'>else</span>
+            <span class='op'>{</span>
+                <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='va'>x</span><span class='op'>[</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span> <span class='va'>start</span>, <span class='va'>end</span> <span class='op'>)</span><span class='op'>]</span>
+                <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='va'>x</span><span class='op'>[</span> <span class='va'>x</span> <span class='op'>&gt;</span> <span class='va'>base</span> <span class='op'>]</span> <span class='op'>-</span> <span class='va'>base</span>
+                <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span> <span class='va'>x</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span> <span class='op'>)</span> <span class='op'>)</span>
+            <span class='op'>}</span>
+        <span class='op'>}</span>, ARGS <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span> start <span class='op'>=</span> <span class='va'>last.frost</span><span class='op'>[</span>,<span class='fl'>6</span><span class='op'>]</span>, end <span class='op'>=</span> <span class='va'>first.heat</span><span class='op'>[</span>,<span class='fl'>6</span><span class='op'>]</span> <span class='op'>)</span> <span class='op'>)</span>, 
+        res.name <span class='op'>=</span> <span class='st'>"tt"</span>, yrange <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='fl'>1960</span>, <span class='fl'>2009</span> <span class='op'>)</span> <span class='op'>)</span>
+</div><div class='output co'>#&gt;                  Name  Number Latitude Longitude year     tt
 #&gt; 1 DEMO Weather Site 1 0000001      -25       135 1960 933.95
 #&gt; 2 DEMO Weather Site 1 0000001      -25       135 2009 521.50
 #&gt; 3 DEMO Weather Site 2 0000002      -25       130 1960 933.95
@@ -996,7 +997,7 @@ determines by period. Then, each level will be passed to different parameter.</p
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
