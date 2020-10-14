@@ -148,7 +148,7 @@ readSiteAPSIM <- function(filename)
     {
         station.name <- omitBlankSE(substr(sta.name.str, 16, 1000))
     } 
-    lat.str <- temp[grep("latitude", temp)]
+    lat.str <- temp[grep("latitude", tolower(temp))]
     if (length((lat.str)) > 0)
     {
         s.pos <- searchChar(lat.str, "=")
@@ -159,13 +159,13 @@ readSiteAPSIM <- function(filename)
         latitude <- as.numeric(substr(lat.str, s.pos + 1, e.pos - 2))
     }
     
-    lon.str <- temp[grep("longitude", temp)]
+    lon.str <- temp[grep("longitude", tolower(temp))]
     if (length((lon.str)) > 0)
     {    
         s.pos <- searchChar(lon.str, "=")
         e.pos <- searchChar(lon.str, "D", s.pos + 1)
         if (is.null(e.pos)) {
-            e.pos <- nchar(lat.str) + 2
+            e.pos <- nchar(lon.str) + 2
         }
         longitude <- as.numeric(substr(lon.str, s.pos + 1, e.pos - 2))
     } 
