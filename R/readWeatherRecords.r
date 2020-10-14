@@ -151,23 +151,15 @@ readSiteAPSIM <- function(filename)
     lat.str <- temp[grep("latitude", tolower(temp))]
     if (length((lat.str)) > 0)
     {
-        s.pos <- searchChar(lat.str, "=")
-        e.pos <- searchChar(lat.str, "D", s.pos + 1)
-        if (is.null(e.pos)) {
-            e.pos <- nchar(lat.str) + 2
-        }
-        latitude <- as.numeric(substr(lat.str, s.pos + 1, e.pos - 2))
+        latitude <- gsub("^latitude *= *(-?\\d*\\.{0,1}\\d*).*$", "\\1", tolower(lat.str))
+        latitude <- as.numeric(latitude)
     }
     
     lon.str <- temp[grep("longitude", tolower(temp))]
     if (length((lon.str)) > 0)
     {    
-        s.pos <- searchChar(lon.str, "=")
-        e.pos <- searchChar(lon.str, "D", s.pos + 1)
-        if (is.null(e.pos)) {
-            e.pos <- nchar(lon.str) + 2
-        }
-        longitude <- as.numeric(substr(lon.str, s.pos + 1, e.pos - 2))
+        longitude <- gsub("^longitude *= *(-?\\d*\\.{0,1}\\d*).*$", "\\1", tolower(lon.str))
+        longitude <- as.numeric(longitude)
     } 
     
     tav.str <- temp[grep("^tav", temp)]
