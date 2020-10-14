@@ -153,6 +153,9 @@ readSiteAPSIM <- function(filename)
     {
         s.pos <- searchChar(lat.str, "=")
         e.pos <- searchChar(lat.str, "D", s.pos + 1)
+        if (is.null(e.pos)) {
+            e.pos <- nchar(lat.str) + 2
+        }
         latitude <- as.numeric(substr(lat.str, s.pos + 1, e.pos - 2))
     }
     
@@ -161,6 +164,9 @@ readSiteAPSIM <- function(filename)
     {    
         s.pos <- searchChar(lon.str, "=")
         e.pos <- searchChar(lon.str, "D", s.pos + 1)
+        if (is.null(e.pos)) {
+            e.pos <- nchar(lat.str) + 2
+        }
         longitude <- as.numeric(substr(lon.str, s.pos + 1, e.pos - 2))
     } 
     
