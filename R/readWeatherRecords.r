@@ -151,14 +151,14 @@ readSiteAPSIM <- function(filename)
     lat.str <- temp[grep("latitude", tolower(temp))]
     if (length((lat.str)) > 0)
     {
-        latitude <- gsub("^latitude *= *(-?\\d*\\.{0,1}\\d*).*$", "\\1", tolower(lat.str))
+        latitude <- gsub("^latitude( |\t)*=( |\t)*(-?\\d*\\.{0,1}\\d*).*$", "\\3", tolower(lat.str))
         latitude <- as.numeric(latitude)
     }
     
     lon.str <- temp[grep("longitude", tolower(temp))]
     if (length((lon.str)) > 0)
     {    
-        longitude <- gsub("^longitude *= *(-?\\d*\\.{0,1}\\d*).*$", "\\1", tolower(lon.str))
+        longitude <- gsub("^longitude( |\t)*=( |\t)*(-?\\d*\\.{0,1}\\d*).*$", "\\3", tolower(lon.str))
         longitude <- as.numeric(longitude)
     } 
     
@@ -178,16 +178,27 @@ readSiteAPSIM <- function(filename)
             gsub('(^amp += +)(\\d+\\.?\\d*)( .*$)', '\\2', amp.str))
     } 
     
-    start.line <- grep("^year", temp)
+    start.line <- grep("^.*(year|Year)", temp)
     a <- utils::read.table(filename, head = FALSE, sep = "", skip = start.line + 1,
             col.names = scan(filename, "", sep = "", skip = start.line - 1, nlines = 1,
                 quiet = TRUE),
             as.is = TRUE)
+    names(a) <- tolower(names(a))
     if (!is.null(a$pan))
     {
         a$evap <- a$pan
     }
     extra <- NULL
+    a$year <- as.numeric(a$year)
+    a$day <- as.numeric(a$day)
+    a$maxt <- as.numeric(a$maxt)
+    a$mint <- as.numeric(a$mint)
+    a$radn <- as.numeric(a$radn)
+    a$rain <- as.numeric(a$rain)
+    if (!is.null(a$evap)) {
+        
+        a$evap <- as.numeric(a$evap)
+    }
     if (is.null(a$avgt))
     {
         extra$avgt <- (a$maxt + a$mint) / 2
