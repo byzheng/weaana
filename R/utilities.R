@@ -123,7 +123,7 @@ spatial <- function(x, slope = TRUE, aspect = TRUE)
 #' @param  angle angle to measure time between, such as twilight (deg).
 #' angular distance between 90 deg and end of twilight - altitude of sun. +ve up, -ve down.
 #' @export
-dayLength <- function( doy, lat, angle = 6 )
+dayLength <- function( doy, lat, angle = -6 )
 {
     # Constant Values
     aeqnox <- 82.25
