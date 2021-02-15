@@ -16,6 +16,6 @@ Date: 2010-04-30
 LazyData: true
 Depends: R (>= 3.5.0)
 Imports: methods, stats, settings, reshape2, lubridate
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Suggests: knitr, rmarkdown

@@ -5,7 +5,7 @@
 \title{The time elapsed in hours between the specified sun angle 
 from 90 degree in am and pm. +ve above the horizon, -ve below the horizon.}
 \usage{
-dayLength(doy, lat, angle = 6)
+dayLength(doy, lat, angle = -6)
 }
 \arguments{
 \item{doy}{day of year number}
