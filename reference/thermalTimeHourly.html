@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate thermal time — thermalTime • weaana</title>
+<title>Calculate thermal time using the hourly temperature (non daily temperature) — thermalTimeHourly • weaana</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Calculate thermal time — thermalTime" />
-<meta property="og:description" content="Calculate thermal time" />
+<meta property="og:title" content="Calculate thermal time using the hourly temperature (non daily temperature) — thermalTimeHourly" />
+<meta property="og:description" content="Calculate thermal time using the hourly temperature (non daily temperature)" />
 
 
 
@@ -120,30 +120,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate thermal time</h1>
+    <h1>Calculate thermal time using the hourly temperature (non daily temperature)</h1>
     <small class="dont-index">Source: <a href='https://github.com/byzheng/weaana/blob/master/R/thermalTime.R'><code>R/thermalTime.R</code></a></small>
-    <div class="hidden name"><code>thermalTime.Rd</code></div>
+    <div class="hidden name"><code>thermalTimeHourly.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculate thermal time</p>
+    <p>Calculate thermal time using the hourly temperature (non daily temperature)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>thermalTime</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>thermalTimeHourly</span><span class='op'>(</span><span class='va'>timestamp</span>, <span class='va'>temperature</span>, <span class='va'>x_temp</span>, <span class='va'>y_temp</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>A WeaAna object.</p></td>
+      <th>timestamp</th>
+      <td><p>The timestamp of weather records</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Not used</p></td>
+      <th>temperature</th>
+      <td><p>The temperature</p></td>
+    </tr>
+    <tr>
+      <th>x_temp</th>
+      <td><p>The cardinal temperatures</p></td>
+    </tr>
+    <tr>
+      <th>y_temp</th>
+      <td><p>The effective thermal time</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A data frame with daily thermal time</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

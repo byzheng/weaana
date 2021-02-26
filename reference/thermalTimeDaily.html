@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate thermal time — thermalTime • weaana</title>
+<title>Calculate thermal time using cardinal temperatures — thermalTimeDaily • weaana</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Calculate thermal time — thermalTime" />
-<meta property="og:description" content="Calculate thermal time" />
+<meta property="og:title" content="Calculate thermal time using cardinal temperatures — thermalTimeDaily" />
+<meta property="og:description" content="Calculate thermal time using cardinal temperatures" />
 
 
 
@@ -120,31 +120,53 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate thermal time</h1>
+    <h1>Calculate thermal time using cardinal temperatures</h1>
     <small class="dont-index">Source: <a href='https://github.com/byzheng/weaana/blob/master/R/thermalTime.R'><code>R/thermalTime.R</code></a></small>
-    <div class="hidden name"><code>thermalTime.Rd</code></div>
+    <div class="hidden name"><code>thermalTimeDaily.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculate thermal time</p>
+    <p>Calculate thermal time using cardinal temperatures</p>
     </div>
 
-    <pre class="usage"><span class='fu'>thermalTime</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>thermalTimeDaily</span><span class='op'>(</span><span class='va'>mint</span>, <span class='va'>maxt</span>, <span class='va'>x_temp</span>, <span class='va'>y_temp</span>, method <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>A WeaAna object.</p></td>
+      <th>mint</th>
+      <td><p>The minimum temperature</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Not used</p></td>
+      <th>maxt</th>
+      <td><p>The maximum temperature</p></td>
+    </tr>
+    <tr>
+      <th>x_temp</th>
+      <td><p>The cardinal temperatures</p></td>
+    </tr>
+    <tr>
+      <th>y_temp</th>
+      <td><p>The effective thermal time</p></td>
+    </tr>
+    <tr>
+      <th>method</th>
+      <td><p>The method to calculate thermal time. 
+The default method is ( maxt + mint ) / 2 - base. 
+The three hour temperature methods will be usesd if method = '3hr'</p></td>
     </tr>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>mint</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>10</span><span class='op'>)</span>
+<span class='va'>maxt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>30</span>, <span class='fl'>40</span><span class='op'>)</span>
+<span class='va'>x_temp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>20</span>, <span class='fl'>35</span><span class='op'>)</span>
+<span class='va'>y_temp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>20</span>, <span class='fl'>0</span><span class='op'>)</span>
+<span class='fu'>thermalTimeDaily</span><span class='op'>(</span><span class='va'>mint</span>, <span class='va'>maxt</span>, <span class='va'>x_temp</span>, <span class='va'>y_temp</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 15.00000 13.33333</div><div class='input'><span class='fu'>thermalTimeDaily</span><span class='op'>(</span><span class='va'>mint</span>, <span class='va'>maxt</span>, <span class='va'>x_temp</span>, <span class='va'>y_temp</span>, method <span class='op'>=</span> <span class='st'>'3hr'</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 9.279687 8.790563</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
