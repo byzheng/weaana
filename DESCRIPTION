@@ -15,7 +15,18 @@ Version: 0.1.0
 Date: 2010-04-30
 LazyData: true
 Depends: R (>= 3.5.0)
-Imports: methods, stats, settings, reshape2, lubridate
+Imports: methods, 
+    stats, 
+    settings, 
+    reshape2, 
+    lubridate,
+    magrittr,
+    rlang,
+    dplyr,
+    tibble
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
-Suggests: knitr, rmarkdown
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat

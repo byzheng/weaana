@@ -172,7 +172,7 @@ setMethod( f = "movExtremeByDegreeDay",
     
                 
                 # Calculate the commulated temperature
-                degree_days <- thermalTime( w_data$maxt, w_data$mint, ... )
+                degree_days <- thermalTimeDaily( w_data$maxt, w_data$mint, ... )
                 
                 # numdays just for reducing computing time
                 max_days <- maximumDays( degree_days, period )

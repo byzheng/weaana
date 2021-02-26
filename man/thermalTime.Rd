@@ -4,22 +4,12 @@
 \alias{thermalTime}
 \title{Calculate thermal time}
 \usage{
-thermalTime(maxt, mint, base = 0, method = NULL, opt = NULL, max = NULL)
+thermalTime(object, ...)
 }
 \arguments{
-\item{maxt}{The maximum temperature}
+\item{object}{A WeaAna object.}
 
-\item{mint}{The minimum temperature}
-
-\item{base}{The base temperature}
-
-\item{method}{The method to calculate thermal time. 
-The default method is ( maxt + mint ) / 2 - base. 
-The three hour temperature methods will be usesd if method = '3hr'}
-
-\item{opt}{The optimum temperature}
-
-\item{max}{The maximum temperature}
+\item{...}{Not used}
 }
 \description{
 Calculate thermal time
