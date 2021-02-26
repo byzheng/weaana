@@ -159,3 +159,37 @@ dayLength <- function( doy, lat, angle = -6 )
     hrlt <- hrangl * rdn2hr * 2.0
     return( hrlt )
 }
+
+
+#'Return a y value from a linear interpolation function
+#'
+#' @param x x
+#' @param y y
+#' @param values values
+#' @param split split
+#' @export
+interpolationFunction <- function( x, y, values, split = '\\s+' )
+{
+    if (is.character(x) & length(x) == 1)
+    {
+        x <- as.numeric(strsplit(x, split)[[1]])
+    }
+    if (is.character(y) & length(y) == 1)
+    {
+        y <- as.numeric(strsplit(y, split)[[1]])
+    }
+    res <- rep(NA, length(values))
+
+    pos <- values < x[1]
+    res[pos] <- y[1]
+
+    for (i in seq(length = length(x) - 1))
+    {
+        pos <- values >= x[i] & values < x[i + 1]
+        slope <- (y[i+1] - y[i] ) / (x[i+1] - x[i])
+        res[pos] <- y[i] + slope * (values[pos] - x[i])
+    }
+    pos <- values >= x[length(x)]
+    res[pos] <- y[length(y)]
+    return ( res )
+}
