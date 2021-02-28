@@ -1,4 +1,5 @@
 library(testthat)
 library(weaana)
-
+library(dplyr)
+library(magrittr)
 test_check("weaana")

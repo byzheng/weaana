@@ -2,52 +2,50 @@
 # * Created:   21:35 Tuesday, 7 June 2011
 # *
 
-#' Calculate thermal time
+#' Calculate thermal time using cardinal temperatures
 #' 
-#' @param object A WeaAna object.
-#' @param ... Not used
-setGeneric( "thermalTime", 
-            function( object, ... )
-            {
-                standardGeneric( "thermalTime" )
-            }
-)
-
-#' Calculate thermal time
-#' 
-#' @docType methods
-#' @param object WeaAna object
+#' @param weather WeaAna object
 #' @param x_temp The cardinal temperatures 
 #' @param y_temp The effective thermal time
 #' @param method The method to calculate thermal time. 
 #' The default method is ( maxt + mint ) / 2 - base. 
 #' The three hour temperature methods will be used if method = '3hr'
+#' @return A data.frame with three columns: year, day and thermalTime.
+#' 
 #' @export
-setMethod( f = "thermalTime", 
-           signature = c( object = "WeaAna" ),
-           definition = function( object, 
-                                  x_temp, y_temp, method = NULL)
-           {
-               
-               res <- NULL
-               for ( i in 1:object@num )
-               {
-                   w_data <- getWeatherRecords( object[i])
-                   w_data <- w_data %>% 
-                       dplyr::mutate(thermalTime = thermalTimeDaily(
-                           .data$maxt, 
-                           .data$mint, 
-                           x_temp = x_temp, 
-                           y_temp = y_temp,
-                           method = method)
-                       )
-                   
-                   res[[i]] <- w_data %>% 
-                       dplyr::select(dplyr::all_of(c('year', 'day', 'thermalTime')))
-               }
-               res <- dplyr::bind_cols(res)
-               return( res )
-})
+#' @examples 
+#' met_file <- system.file("extdata/WeatherRecordsDemo1.met", package = "weaana")
+#' records <- readWeatherRecords(met_file)
+#' x_temp <- c(0, 26, 34)
+#' y_temp <- c(0, 26, 0)
+#' res <- thermalTime(records, x_temp, y_temp)
+#' head(res)
+#' res <- thermalTime(records, x_temp, y_temp, method = "3hr")
+#' head(res)
+thermalTime <- function(weather, x_temp, y_temp, method = NULL)
+{
+    if (class(weather) != "WeaAna") {
+        stop("WeaAna class is required.")
+    }
+    res <- NULL
+    for ( i in 1:weather@num )
+    {
+        w_data <- getWeatherRecords( weather[i])
+        w_data <- w_data %>% 
+            dplyr::mutate(thermalTime = thermalTimeDaily(
+                .data$mint, 
+                .data$maxt, 
+                x_temp = x_temp, 
+                y_temp = y_temp,
+                method = method)
+            )
+        
+        res[[i]] <- w_data %>% 
+            dplyr::select(dplyr::all_of(c('year', 'day', 'thermalTime')))
+    }
+    res <- dplyr::bind_cols(res)
+    return( res )
+}
 
 
 
@@ -60,6 +58,7 @@ setMethod( f = "thermalTime",
 #' @param method The method to calculate thermal time. 
 #' The default method is ( maxt + mint ) / 2 - base. 
 #' The three hour temperature methods will be usesd if method = '3hr'
+#' @return The thermal time.
 #' @export
 #' @examples 
 #' mint <- c(0, 10)
@@ -113,6 +112,14 @@ thermalTimeDaily <- function(mint, maxt, x_temp, y_temp,
 #'
 #' @return A data frame with daily thermal time
 #' @export
+#' @examples 
+#' met_file <- system.file("extdata/WeatherHourly.csv", package = "weaana")
+#' hourly <- read.csv(met_file, as.is = TRUE) 
+#' 
+#' hourly$timestamp <- as.POSIXct(hourly$timestamp, format = "%Y-%m-%dT%H:%M:%SZ")
+#' x_temp <- c(0, 20, 35)
+#' y_temp <- c(0, 20, 0)
+#' thermalTimeHourly(hourly$timestamp, hourly$temperature, x_temp, y_temp)
 thermalTimeHourly <- function(timestamp, temperature, x_temp, y_temp)  {
     if (!("POSIXct" %in% class(timestamp))) {
         stop("POSIXct class is required for timestamp")
@@ -140,7 +147,7 @@ thermalTimeHourly <- function(timestamp, temperature, x_temp, y_temp)  {
             x = x_temp, 
             y = y_temp, 
             values = .data$temperature)) %>% 
-        dplyr::group_by(dplyr::all_of(.data$date)) %>% 
+        dplyr::group_by(.data$date) %>% 
         dplyr::summarise(value = sum(.data$tt * .data$diff) / sum(.data$diff), 
                          .groups = "drop")
     res    

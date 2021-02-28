@@ -2,15 +2,34 @@
 % Please edit documentation in R/thermalTime.R
 \name{thermalTime}
 \alias{thermalTime}
-\title{Calculate thermal time}
+\title{Calculate thermal time using cardinal temperatures}
 \usage{
-thermalTime(object, ...)
+thermalTime(weather, x_temp, y_temp, method = NULL)
 }
 \arguments{
-\item{object}{A WeaAna object.}
+\item{weather}{WeaAna object}
 
-\item{...}{Not used}
+\item{x_temp}{The cardinal temperatures}
+
+\item{y_temp}{The effective thermal time}
+
+\item{method}{The method to calculate thermal time. 
+The default method is ( maxt + mint ) / 2 - base. 
+The three hour temperature methods will be used if method = '3hr'}
+}
+\value{
+A data.frame with three columns: year, day and thermalTime.
 }
 \description{
-Calculate thermal time
+Calculate thermal time using cardinal temperatures
+}
+\examples{
+met_file <- system.file("extdata/WeatherRecordsDemo1.met", package = "weaana")
+records <- readWeatherRecords(met_file)
+x_temp <- c(0, 26, 34)
+y_temp <- c(0, 26, 0)
+res <- thermalTime(records, x_temp, y_temp)
+head(res)
+res <- thermalTime(records, x_temp, y_temp, method = "3hr")
+head(res)
 }

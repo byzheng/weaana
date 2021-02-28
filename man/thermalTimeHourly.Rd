@@ -21,3 +21,12 @@ A data frame with daily thermal time
 \description{
 Calculate thermal time using the hourly temperature (non daily temperature)
 }
+\examples{
+met_file <- system.file("extdata/WeatherHourly.csv", package = "weaana")
+hourly <- read.csv(met_file, as.is = TRUE) 
+
+hourly$timestamp <- as.POSIXct(hourly$timestamp, format = "\%Y-\%m-\%dT\%H:\%M:\%SZ")
+x_temp <- c(0, 20, 35)
+y_temp <- c(0, 20, 0)
+thermalTimeHourly(hourly$timestamp, hourly$temperature, x_temp, y_temp)
+}

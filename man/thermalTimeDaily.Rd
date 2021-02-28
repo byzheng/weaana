@@ -19,6 +19,9 @@ thermalTimeDaily(mint, maxt, x_temp, y_temp, method = NULL)
 The default method is ( maxt + mint ) / 2 - base. 
 The three hour temperature methods will be usesd if method = '3hr'}
 }
+\value{
+The thermal time.
+}
 \description{
 Calculate thermal time using cardinal temperatures
 }
