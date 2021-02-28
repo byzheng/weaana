@@ -17,7 +17,7 @@ test_that("Thermal time", {
     x_temp <- c(0, 20, 35)
     y_temp <- c(0, 20, 0)
     res <- thermalTimeHourly(hourly$timestamp, hourly$temperature, x_temp, y_temp)
-    expect_equal(res$value[1], 16.39195109)
+    expect_equal(res$value[1], 16.391951095089993)
     # Read weather records
     met_file <- system.file("extdata/WeatherRecordsDemo1.met", package = "weaana")
     records <- readWeatherRecords(met_file)
