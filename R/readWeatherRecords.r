@@ -178,19 +178,42 @@ readSiteAPSIM <- function(filename)
             gsub('(^amp += +)(\\d+\\.?\\d*)( .*$)', '\\2', amp.str))
     } 
     
-    start.line <- grep("^.*(year|Year)", temp)
+    # for year 
+    start.line <- grep("^.*(year|Year|date|Date)", temp)
+    if (length(start.line)  == 0) { 
+        stop("Keywords year or date ae not found.")
+    }
+    
     a <- utils::read.table(filename, head = FALSE, sep = "", skip = start.line + 1,
-            col.names = scan(filename, "", sep = "", skip = start.line - 1, nlines = 1,
-                quiet = TRUE),
-            as.is = TRUE)
+        col.names = scan(filename, "", sep = "", skip = start.line - 1, nlines = 1,
+            quiet = TRUE),
+        as.is = TRUE)
     names(a) <- tolower(names(a))
+    # Convert date
+    if (!is.null(a$date)) {
+        date_format <- scan(filename, "", sep = "", skip = start.line, nlines = 1,
+                            quiet = TRUE)
+        date_format <- date_format[which(names(a) == "date")]
+        if (nchar(date_format) == 0) {
+            stop("Date format is not found")
+        }
+        date_format <- gsub("(\\(|\\))", "", date_format)
+        date_format <- "%d/%m/%Y"
+        a$date <- as.Date(a$date, format = date_format)
+        if (sum(is.na(a$date)) > 0) {
+            stop("NA values are found for date columns.")
+        }
+        a$year <- format(a$date, "%Y")
+        a$day <- format(a$date, "%j")
+    }
+    a$year <- as.numeric(a$year)
+    a$day <- as.numeric(a$day)
+    
     if (!is.null(a$pan))
     {
         a$evap <- a$pan
     }
     extra <- NULL
-    a$year <- as.numeric(a$year)
-    a$day <- as.numeric(a$day)
     a$maxt <- as.numeric(a$maxt)
     a$mint <- as.numeric(a$mint)
     a$radn <- as.numeric(a$radn)
