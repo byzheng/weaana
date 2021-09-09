@@ -1,5 +1,5 @@
 Package: weaana
-Maintainer: Bangyou Zheng <Bangyou.Zheng@csiro.au>
+Maintainer: Bangyou Zheng <bangyou.zheng@csiro.au>
 Title: Analysis the Weather Data
 Type: Package
 Description: Analysis the weather data.
@@ -12,7 +12,7 @@ URL: https://weaana.bangyou.me/,
 BugReports: https://github.com/byzheng/weaana/issues
 Encoding: UTF-8
 Version: 0.1.0
-Date: 2010-04-30
+Date: 2021-09-06
 LazyData: true
 Depends: R (>= 3.5.0)
 Imports: methods, 
