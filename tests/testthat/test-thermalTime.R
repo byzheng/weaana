@@ -1,5 +1,5 @@
 test_that("Thermal time", {
-    options(digits = 20)
+    old <- options(digits = 20)
     # The daily thermal time
     mint <- c(0, 10)
     maxt <- c(30, 40)
@@ -28,5 +28,5 @@ test_that("Thermal time", {
     res <- thermalTime(records, x_temp, y_temp, method = "3hr")
     expect_equal(res[1,3], 19.5499999999, tolerance=1e-3)
     
-      
+    options(old)
 })

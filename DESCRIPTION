@@ -2,11 +2,12 @@ Package: weaana
 Maintainer: Bangyou Zheng <bangyou.zheng@csiro.au>
 Title: Analysis the Weather Data
 Type: Package
-Description: Analysis the weather data.
+Description: Functions are collected to analyse weather data for agriculture 
+    purposes including to to in multiple formats, calculate extreme climate index.
 Authors@R: person("Bangyou", "Zheng", 
                email = "bangyou.zheng@csiro.au", 
                role = c("aut", "cre"))
-License: file LICENSE
+License: MIT + file LICENSE
 URL: https://weaana.bangyou.me/,
     https://github.com/byzheng/weaana
 BugReports: https://github.com/byzheng/weaana/issues
