@@ -6,6 +6,8 @@
 #' 
 #' @param object A WeaAna object.
 #' @param ... Not used
+#' @docType methods
+#' @rdname writeWeatherRecords-methods
 setGeneric('writeWeatherRecords', 
         function(object, ...)
         {
@@ -16,11 +18,12 @@ setGeneric('writeWeatherRecords',
 
 #' Write weather records into file
 #' 
-#' @docType methods
 #' @param object A WeaAna object.
 #' @param file Path of output file.
-#' @param cols Columns to export
-#' @export
+#' @param cols Columns to export. All columns exported if NULL
+#' @return No return values
+#' @rdname writeWeatherRecords-methods
+#' @aliases writeWeatherRecords,WeaAna,WeaAna-method
 setMethod(f = 'writeWeatherRecords', 
     signature = c(object = 'WeaAna'),
     definition = function(object, file, cols = NULL)

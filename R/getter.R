@@ -51,10 +51,12 @@ setMethod( f = "[",
 )
 
 
-#' Get WeaAnaSite object by position
-#' 
-#' @param object A WeaAna object.
-#' @param ... Not used
+# Get WeaAnaSite object by position
+# 
+# @param object A WeaAna object.
+# @param ... Not used
+# @docType methods
+# @rdname getWeaAnaSiteByPos-methods
 setGeneric( "getWeaAnaSiteByPos", 
         function( object, ... )
         {
@@ -62,16 +64,19 @@ setGeneric( "getWeaAnaSiteByPos",
         }
 )
 
-#' Plot site position in a map
-#'
-#' @docType methods
-#' @param object A WeaAna object.
-#' @param pos The position would be return.
-#' @examples
-#' library(weaana)
-#' data( "WeatherRecordsDemo" ) 
-#' getWeaAnaSiteByPos( records, 1 )
-#' @export
+# Plot site position in a map
+#
+# @docType methods
+# @param object A WeaAna object.
+# @param pos The position would be return.
+# @examples
+# library(weaana)
+# data( "WeatherRecordsDemo" ) 
+# getWeaAnaSiteByPos( records, 1 )
+# @return A new WeaAna object at pos.
+# @export
+# @rdname getWeaAnaSiteByPos-methods
+# @aliases getWeaAnaSiteByPos,WeaAna,WeaAna-method
 setMethod( f = "getWeaAnaSiteByPos", 
         signature = c( object = "WeaAna" ),
         definition = function( object, pos )
@@ -92,10 +97,12 @@ setMethod( f = "getWeaAnaSiteByPos",
 
 
 
-#' Get results by name
-#' 
-#' @param object A WeaAna object.
-#' @param ... Not used
+# Get results by name
+# 
+# @param object A WeaAna object.
+# @param ... Not used
+# @docType methods
+# @rdname getResults-methods
 setGeneric( "getResults", 
         function( object, ... )
         {
@@ -103,16 +110,19 @@ setGeneric( "getResults",
         }
 )
 
-#' Get results by name
-#'
-#' @docType methods
-#' @param object A WeaAna object.
-#' @param name The results with these name are returned.
-#' @examples
-#' library(weaana)
-#' data( "WeatherRecordsDemo" ) 
-#' getResults( records, "result" )
-#' @export
+# Get results by name
+#
+# @docType methods
+# @param object A WeaAna object.
+# @param name The results with these name are returned.
+# @examples
+# library(weaana)
+# data( "WeatherRecordsDemo" ) 
+# getResults( records, "result" )
+# @return Results for weaana object
+# @export
+# @rdname getResults-methods
+# @aliases getResults,WeaAna,WeaAna-method
 setMethod( f = "getResults", 
         signature = c( object = "WeaAna" ),
         definition = function( object, name = NULL )
@@ -153,6 +163,8 @@ setMethod( f = "getResults",
 #' 
 #' @param object A WeaAna object.
 #' @param ... Not used
+#' @docType methods
+#' @rdname siteInfor-methods
 setGeneric( "siteInfor", 
         function( object, ... )
         {
@@ -171,6 +183,9 @@ setGeneric( "siteInfor",
 #' siteInfor( records )
 #' siteInfor( records, load.now = TRUE )
 #' @export
+#' @return Site information in the WeaAna object
+#' @rdname siteInfor-methods
+#' @aliases siteInfor,WeaAna,WeaAna-method
 setMethod( f = "siteInfor", 
         signature = c( object = "WeaAna" ),
         definition = function( object, load.now = FALSE )
@@ -206,6 +221,9 @@ setMethod( f = "siteInfor",
 #' @param object A WeaAnaSite object.
 #' @param load.now Whether load site information 
 #' @export
+#' @return Site information in the WeaAnaSite object
+#' @rdname siteInfor-methods
+#' @aliases siteInfor,WeaAnaSite,WeaAnaSite-method
 setMethod( f = "siteInfor", 
         signature = c( object = "WeaAnaSite" ),
         definition = function( object, load.now = FALSE )
@@ -252,10 +270,12 @@ setMethod( f = "siteInfor",
         }
 )
 
-#' Get name and type of results
-#' 
-#' @param object A WeaAna object.
-#' @param ... Not used
+# Get name and type of results
+# 
+# @param object A WeaAna object.
+# @param ... Not used
+# @docType methods
+# @rdname resultsInfor-methods
 setGeneric( "resultsInfor", 
         function( object, ... )
         {
@@ -263,16 +283,19 @@ setGeneric( "resultsInfor",
         }
 )
 
-#' Get name and type of results
-#'
-#' @docType methods
-#' @param object A WeaAna object.
-#' @examples
-#' library(weaana)
-#' data( "WeatherRecordsDemo" ) 
-#' resultsInfor( records )
-#' 
-#' @export
+# Get name and type of results
+#
+# @docType methods
+# @param object A WeaAna object.
+# @examples
+# library(weaana)
+# data( "WeatherRecordsDemo" ) 
+# resultsInfor( records )
+# 
+# @export
+# @return Information for results
+# @rdname resultsInfor-methods
+# @aliases resultsInfor,WeaAna,WeaAna-method
 setMethod( f = "resultsInfor", 
         signature = c( object = "WeaAna" ),
         definition = function( object )
@@ -290,10 +313,12 @@ setMethod( f = "resultsInfor",
 )
 
 
-#' Get result type by name
-#' 
-#' @param object A WeaAna object.
-#' @param name Result name.
+# Get result type by name
+# 
+# @param object A WeaAna object.
+# @param name Result name.
+# @docType methods
+# @rdname findResType-methods
 setGeneric( "findResType", 
         function( object, name )
         {
@@ -301,11 +326,13 @@ setGeneric( "findResType",
         }
 )
 
-#' Get result type by name
-#' 
-#' @param object A WeaAna object.
-#' @param name Result name.
-#' @export
+# Get result type by name
+# 
+# @param object A WeaAna object.
+# @param name Result name.
+# @export
+# @rdname findResType-methods
+# @aliases resultsInfor,WeaAna,WeaAna-method
 setMethod( f = "findResType", 
         signature = c( object = "WeaAna", name = "character" ),
         definition = function( object, name )
@@ -336,6 +363,8 @@ setMethod( f = "findResType",
 #' 
 #' @param object A WeaAna object.
 #' @param ... Not used
+#' @docType methods
+#' @rdname getWeatherRecords-methods
 setGeneric( "getWeatherRecords", 
         function( object, ... )
         {
@@ -356,6 +385,9 @@ setGeneric( "getWeatherRecords",
 #' getWeatherRecords( records, yrange = c( 2008, 2009 ), length = 10 )
 #' 
 #' @export
+#' @return A data frame with all weather records
+#' @rdname getWeatherRecords-methods
+#' @aliases getWeatherRecords,WeaAna,WeaAna-method
 setMethod( f = "getWeatherRecords", 
         signature = c( object = "WeaAna" ),
         definition = function( object, yrange = NULL, vars = "all", ... )
@@ -459,10 +491,10 @@ setMethod( f = "getWeatherRecords",
 )
 
 #TODO: Change this function for load later
-#' Get a string which contains the basic information of weather station.
-#' 
-#' @param object A WeaAna object.
-#' @param ... Not used
+# Get a string which contains the basic information of weather station.
+# 
+# @param object A WeaAna object.
+# @param ... Not used
 setGeneric( "getStationInforByString", 
         function( object, ... )
         {
@@ -470,11 +502,11 @@ setGeneric( "getStationInforByString",
         }
 )
 
-#' Get a string which contains the basic information of weather station.
-#' 
-#' @param object A WeaAna object.
-#' @param yrange Year range.
-#' @export
+# Get a string which contains the basic information of weather station.
+# 
+# @param object A WeaAna object.
+# @param yrange Year range.
+# @export
 setMethod( f = "getStationInforByString", 
         signature = c( object = "WeaAnaSite" ),
         definition = function( object, yrange = NULL )
@@ -501,10 +533,10 @@ setMethod( f = "getStationInforByString",
 )
 
 #------------------------------------------------------------------------------
-#' Get available variables of weather records
-#' 
-#' @param object A WeaAna object.
-#' @param ... Not used
+# Get available variables of weather records
+# 
+# @param object A WeaAna object.
+# @param ... Not used
 setGeneric( "getAvaiVars", 
         function( object, ... )
         {
@@ -512,14 +544,14 @@ setGeneric( "getAvaiVars",
         }
 )
 
-#' Get available variables of weather records
-#' 
-#' @param object A WeaAna object.
-#' @examples
-#' library(weaana)
-#' data( "WeatherRecordsDemo" ) 
-#' getAvaiVars( records )
-#' @export
+# Get available variables of weather records
+# 
+# @param object A WeaAna object.
+# @examples
+# library(weaana)
+# data( "WeatherRecordsDemo" ) 
+# getAvaiVars( records )
+# @export
 setMethod( f = "getAvaiVars", 
         signature = c( object = "WeaAna" ),
         definition = function( object )
@@ -537,9 +569,9 @@ setMethod( f = "getAvaiVars",
         }
 )
 
-#' Get available variables of weather records
-#' 
-#' @param object A WeaAnaSite object.
+# Get available variables of weather records
+# 
+# @param object A WeaAnaSite object.
 setMethod( f = "getAvaiVars", 
         signature = c( object = "WeaAnaSite" ),
         definition = function( object )
@@ -553,10 +585,10 @@ setMethod( f = "getAvaiVars",
 
 
 #------------------------------------------------------------------------------
-#' Add marker for each site
-#' 
-#' @param object A WeaAna object.
-#' @param ... Not used
+# Add marker for each site
+# 
+# @param object A WeaAna object.
+# @param ... Not used
 setGeneric( "addMarkers", 
         function( object, ... )
         {
@@ -564,16 +596,16 @@ setGeneric( "addMarkers",
         }
 )
 
-#' Add marker for each site
-#' 
-#' @param object A WeaAna object.
-#' @param ... marker arguments
-#' @examples
-#' library(weaana)
-#' data( "WeatherRecordsDemo" ) 
-#' addMarkers( records, model = c( "SILO", "A2" ) ) 
-#' 
-#' @export
+# Add marker for each site
+# 
+# @param object A WeaAna object.
+# @param ... marker arguments
+# @examples
+# library(weaana)
+# data( "WeatherRecordsDemo" ) 
+# addMarkers( records, model = c( "SILO", "A2" ) ) 
+# 
+# @export
 setMethod( f = "addMarkers", 
         signature = c( object = "WeaAna" ),
         definition = function( object, ... )
@@ -609,10 +641,10 @@ setMethod( f = "addMarkers",
 
 
 #------------------------------------------------------------------------------
-#' Delete marker for each site
-#' 
-#' @param object A WeaAna object.
-#' @param name A vector of name to remove
+# Delete marker for each site
+# 
+# @param object A WeaAna object.
+# @param name A vector of name to remove
 setGeneric( "delMarkers", 
         function( object, name )
         {
@@ -620,17 +652,17 @@ setGeneric( "delMarkers",
         }
 )
 
-#' Delete marker for each site
-#' 
-#' @param object A WeaAna object.
-#' @param name A vector of name to remove
-#' @examples
-#' library(weaana)
-#' data( "WeatherRecordsDemo" ) 
-#' addMarkers( records, model = c( "SILO", "A2" ) ) 
-#' delMarkers( records, name = "model" )
-#' 
-#' @export
+# Delete marker for each site
+# 
+# @param object A WeaAna object.
+# @param name A vector of name to remove
+# @examples
+# library(weaana)
+# data( "WeatherRecordsDemo" ) 
+# addMarkers( records, model = c( "SILO", "A2" ) ) 
+# delMarkers( records, name = "model" )
+# 
+# @export
 setMethod( f = "delMarkers", 
         signature = c( object = "WeaAna" ),
         definition = function( object, name = NULL )
@@ -649,10 +681,10 @@ setMethod( f = "delMarkers",
 
 
 #------------------------------------------------------------------------------
-#' Site number
-#' 
-#' @param object A WeaAna object.
-#' @param ... Not used
+# Site number
+# 
+# @param object A WeaAna object.
+# @param ... Not used
 setGeneric( "siteNum", 
         function( object, ... )
         {
@@ -660,15 +692,15 @@ setGeneric( "siteNum",
         }
 )
 
-#' Site number
-#' 
-#' @param object A WeaAna object.
-#' @param ... marker arguments
-#' @examples
-#' library(weaana)
-#' data( "WeatherRecordsDemo" ) 
-#' siteNum( records )
-#' @export
+# Site number
+# 
+# @param object A WeaAna object.
+# @param ... marker arguments
+# @examples
+# library(weaana)
+# data( "WeatherRecordsDemo" ) 
+# siteNum( records )
+# @export
 setMethod( f = "siteNum", 
         signature = c( object = "WeaAna" ),
         definition = function( object, ... )
@@ -680,15 +712,15 @@ setMethod( f = "siteNum",
 
 
 #------------------------------------------------------------------------------
-#' Get parameters
-#' @param name Variable name which will return. All parameters will return if NULL
-#' @examples
-#' library(weaana)
-#' data("records") 
-#' waGetPara( "yrange" )
-#' # for lower level parameters
-#' waGetPara( "extreme$maxt$hot.day$value" )
-#' @export
+# Get parameters
+# @param name Variable name which will return. All parameters will return if NULL
+# @examples
+# library(weaana)
+# data("records") 
+# waGetPara( "yrange" )
+# # for lower level parameters
+# waGetPara( "extreme$maxt$hot.day$value" )
+# @export
 waGetPara <- function( name = NULL )
 {
     weaana.glb.para <- defaultPara()
@@ -714,10 +746,10 @@ waGetPara <- function( name = NULL )
 
 
 #------------------------------------------------------------------------------
-#' Set parameters
-#' 
-#' @param ... Parameter arguments
-#' @export
+# Set parameters
+# 
+# @param ... Parameter arguments
+# @export
 setPara <- function( ... )
 {
     settings::stop_if_reserved(...)
@@ -727,9 +759,9 @@ setPara <- function( ... )
 
 
 #------------------------------------------------------------------------------
-#'  Obtain version of package weaana
-#' 
-#' @export
+#  Obtain version of package weaana
+# 
+# @export
 weaanaVersion <- function( )
 {
     infor <- utils::sessionInfo() 
@@ -758,9 +790,9 @@ weaanaVersion <- function( )
 
 
 
-#' Get filename
-#' 
-#' @param object A WeaAna object.
+# Get filename
+# 
+# @param object A WeaAna object.
 setGeneric("getFilenames", 
         function(object)
         {
@@ -768,11 +800,11 @@ setGeneric("getFilenames",
         }
 )
 
-#' Get filename
-#'
-#' @docType methods
-#' @param object A WeaAna object.
-#' @export
+# Get filename
+#
+# @docType methods
+# @param object A WeaAna object.
+# @export
 setMethod(f = "getFilenames", 
         signature = c(object = "WeaAna"),
         definition = function(object)

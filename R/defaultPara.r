@@ -86,13 +86,13 @@ WA_OPTIONS <- settings::options_manager(
     placeholder = NA # a placeholder to conveniently add new parameters
 )
 
-#' Get the all/a default parameter value
-#' 
-#' Get the all/a default parameter value
-#' @param para.name The paramer with this name will be returned
-#' @return The all default parameter will be returned if the para.name is not specified, or
-#' just the default paramter whose name is para.name
-#' @export
+# Get the all/a default parameter value
+# 
+# Get the all/a default parameter value
+# @param para.name The paramer with this name will be returned
+# @return The all default parameter will be returned if the para.name is not specified, or
+# just the default paramter whose name is para.name
+# @export
 defaultPara <- function( para.name = NULL )
 {
     if ( !is.null( para.name ) )

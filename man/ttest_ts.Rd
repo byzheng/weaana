@@ -11,6 +11,9 @@ ttest_ts(y, slope = NULL)
 
 \item{slope}{Whether export slope}
 }
+\value{
+p values of t-test
+}
 \description{
 Method is presented by Santer et al. 2000
 }

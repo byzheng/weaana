@@ -2,13 +2,12 @@
 # * Created:   15/04/2010
 # *
 
-#' Calcualte the index according year and days at a specific period
-#' 
-#' @param year A vector of year
-#' @param day A vector of year
-#' @param period The periods to count
-#' @return Generated index according to period
-#' @export
+# Calcualte the index according year and days at a specific period
+# 
+# @param year A vector of year
+# @param day A vector of year
+# @param period The periods to count
+# @return Generated index according to period
 periodIndex <- function( year, day, period )
 {
     if ( length( period ) == length( year ) )

@@ -23,6 +23,9 @@ diurnalT(maxt, mint, doy, hour, latitude, A = 1.5, B = 4, C = 1)
 
 \item{C}{is the time lag for min temperature after sunrise}
 }
+\value{
+A vector with diurnal air temperature
+}
 \description{
 Calculate the diurnal variation in air temperature.
 Parton WJ, Logan JA (1981) A model for diurnal variation in soil and air temperature. 

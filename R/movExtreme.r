@@ -3,10 +3,10 @@
 # *
 
 
-#' Calculate the moving extreme temperature by days
-#' 
-#' @param object A WeaAna object.
-#' @param ... Not used
+# Calculate the moving extreme temperature by days
+# 
+# @param object A WeaAna object.
+# @param ... Not used
 setGeneric( "movExtremeByDay", 
         function( object, ... )
         {
@@ -15,18 +15,18 @@ setGeneric( "movExtremeByDay",
 )
 
 
-#' Calculate the moving extreme temperature by days
-#'
-#' @docType methods
-#' @param object A WeaAna object.
-#' @param indices The data will be classify according the classes
-#' @param period The periods for moving window
-#' @param shift The method for calculating percentage of moving extreme temperature.
-#' @param numdays The maximum days for statistics 
-#' @param yrange The year range for statistics
-#' @param res.name The name for result
-#' @return The probability occurring a certain days extreme temperature
-#' @export
+# Calculate the moving extreme temperature by days
+#
+# @docType methods
+# @param object A WeaAna object.
+# @param indices The data will be classify according the classes
+# @param period The periods for moving window
+# @param shift The method for calculating percentage of moving extreme temperature.
+# @param numdays The maximum days for statistics 
+# @param yrange The year range for statistics
+# @param res.name The name for result
+# @return The probability occurring a certain days extreme temperature
+# @export
 setMethod( f = "movExtremeByDay", 
         signature = c( object = "WeaAna" ),
         definition = function( object, 
@@ -120,10 +120,10 @@ setMethod( f = "movExtremeByDay",
 )
 
 
-#' Calculate the moving extreme temperature by commulated temperature
-#' 
-#' @param object A WeaAna object.
-#' @param ... Not used
+# Calculate the moving extreme temperature by commulated temperature
+# 
+# @param object A WeaAna object.
+# @param ... Not used
 setGeneric( "movExtremeByDegreeDay", 
         function( object, ... )
         {
@@ -131,18 +131,18 @@ setGeneric( "movExtremeByDegreeDay",
         }
 )
 
-#' Calculate the moving extreme temperature by commulated temperature
-#' 
-#' @docType methods
-#' @param object WeaAna object
-#' @param indices The data will be classify according the classes
-#' @param period The periods for moving window
-#' @param shift The method for calculating percentage of moving extreme temperature.
-#' @param numdays The maximum days for statistics 
-#' @param yrange The year range for statistics
-#' @param res.name Name of results
-#' @param ... Other argument to calculate thermal time 
-#' @export
+# Calculate the moving extreme temperature by commulated temperature
+# 
+# @docType methods
+# @param object WeaAna object
+# @param indices The data will be classify according the classes
+# @param period The periods for moving window
+# @param shift The method for calculating percentage of moving extreme temperature.
+# @param numdays The maximum days for statistics 
+# @param yrange The year range for statistics
+# @param res.name Name of results
+# @param ... Other argument to calculate thermal time 
+# @export
 setMethod( f = "movExtremeByDegreeDay", 
         signature = c( object = "WeaAna" ),
         definition = function( object, 
@@ -286,10 +286,10 @@ setMethod( f = "movExtremeByDegreeDay",
         }
 )
 
-#' Calculate the maximum days which degree days is more than "key.degree.day"
-#' @param degree.day A vector of accumulated temperature
-#' @param key.degree.day The periods for moving window
-#' @return The probability occuring a certain days extreme temperature
+# Calculate the maximum days which degree days is more than "key.degree.day"
+# @param degree.day A vector of accumulated temperature
+# @param key.degree.day The periods for moving window
+# @return The probability occuring a certain days extreme temperature
 maximumDays <- function( degree.day, key.degree.day = 400 )
 {
     pos <- which.min( degree.day )

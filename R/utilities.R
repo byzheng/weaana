@@ -3,17 +3,15 @@
 # * Copyright: AS IS
 # *
 
-
-#' Transfer of sign - from FORTRAN.
-#' The result is of the same type and kind as a. Its value is the abs(a) of a,
-#' if b is greater than or equal positive zero; and -abs(a), if b is less than
-#' or equal to negative zero.
-#' Example a = sign_apsim (30,-2) ! a is assigned the value -30
-#' 
-#' @param a value 1
-#' @param b value 2
-sign_apsim <- function( a, b )
-{
+# Transfer of sign - from FORTRAN.
+# The result is of the same type and kind as a. Its value is the abs(a) of a,
+# if b is greater than or equal positive zero; and -abs(a), if b is less than
+# or equal to negative zero.
+# Example a = sign_apsim (30,-2) ! a is assigned the value -30
+# 
+# @param a value 1
+# @param b value 2
+sign_apsim <- function( a, b ) {
     if ( b >= 0 )
     {
         return( abs( a ) )
@@ -29,6 +27,7 @@ sign_apsim <- function( a, b )
 #' Method is presented by Santer et al. 2000
 #' @param y A vector of time serial data
 #' @param slope Whether export slope
+#' @return p values of t-test
 #' @export
 ttest_ts <- function(y, slope = NULL)
 {
@@ -59,14 +58,13 @@ ttest_ts <- function(y, slope = NULL)
 }
 
 
-#' Calculate the spatial slope and aspect
-#' 
-#' Burrough, P. A., and McDonell, R. A., 1998. Principles of Geographical Information Systems (Oxford University Press, New York)
-#' @param x A matrix for spatial data with row for longitude and column for latitude.
-#' dimnames must be specified for values of longitude and latitude
-#' @param slope Logical, whether return slope
-#' @param aspect Logical, whether return aspect
-#' @export
+# Calculate the spatial slope and aspect
+# 
+# Burrough, P. A., and McDonell, R. A., 1998. Principles of Geographical Information Systems (Oxford University Press, New York)
+# @param x A matrix for spatial data with row for longitude and column for latitude.
+# dimnames must be specified for values of longitude and latitude
+# @param slope Logical, whether return slope
+# @param aspect Logical, whether return aspect
 spatial <- function(x, slope = TRUE, aspect = TRUE)
 {
     x_dim <- dim(x)
@@ -122,6 +120,7 @@ spatial <- function(x, slope = TRUE, aspect = TRUE)
 #' @param lat latitude of site (deg) 
 #' @param  angle angle to measure time between, such as twilight (deg).
 #' angular distance between 90 deg and end of twilight - altitude of sun. +ve up, -ve down.
+#' @return day length in hours
 #' @export
 dayLength <- function( doy, lat, angle = -6 )
 {
@@ -167,6 +166,7 @@ dayLength <- function( doy, lat, angle = -6 )
 #' @param y y
 #' @param values values
 #' @param split split
+#' @return The interpolated values
 #' @export
 interpolationFunction <- function( x, y, values, split = '\\s+' )
 {
@@ -192,4 +192,66 @@ interpolationFunction <- function( x, y, values, split = '\\s+' )
     pos <- values >= x[length(x)]
     res[pos] <- y[length(y)]
     return ( res )
+}
+
+
+
+# Calculate weather variables through a string formula.
+#
+# @param x A data frame contained all weather records
+# @param str A string function
+# @param len The length of result
+wcalStr <- function( x, str = NULL, len = length( x[[1]] ) )
+{
+    temp.env <- new.env()
+    x.names <- names( x )
+    for ( j in seq( along = x.names ) )
+    {
+        assign( x.names[j], x[[x.names[j]]], envir = temp.env )
+    }
+    res <- eval( parse( text = as.character( str ) ), envir = temp.env )
+    
+    if ( length( res ) != len )
+    {
+        stop( "The result length is not equal to original length" )
+    }
+    return( res )
+}
+
+
+# Calculate weather variables through a function.
+#
+# @param x A data frame contained all weather records
+# @param FUN A function to be used which results should have the same length as original records.
+# @param var.args Arguments of weather variable pass to \code{FUN}.
+# @param other.args Optional arguments to \code{FUN}
+# @param len The length of result
+wcalFun <- function( x, FUN, var.args, other.args = NULL, len = length( x[[1]] ) )
+{
+    temp.env <- new.env()
+    x.names <- names( x )
+    for ( j in seq( along = x.names ) )
+    {
+        assign( x.names[j], x[[x.names[j]]], envir = temp.env )
+    }
+    
+    fun.args <- as.list( NULL )
+    for ( j in seq( along = var.args ) )
+    {
+        if ( var.args[j] %in% x.names )
+        {
+            fun.args[[j]] <- x[[var.args[j]]]
+        } else
+        {
+            stop( paste( "Can not find variable ", var.args[j], sep = "" ) )
+        }
+    }
+    fun.args <- c( fun.args, other.args )
+    res <- do.call( FUN, fun.args )
+    
+    if ( length( res ) != len )
+    {
+        stop( "The result length is not equal to original length" )
+    }
+    return( res )
 }

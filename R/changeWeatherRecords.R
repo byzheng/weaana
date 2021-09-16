@@ -7,7 +7,8 @@
 #' 
 #' @param object A WeaAna object.
 #' @param ... Not used
-#' @keywords internal
+#' @docType methods
+#' @rdname changeWeatherRecords-methods
 setGeneric('changeWeatherRecords', 
         function(object, ...)
         {
@@ -22,7 +23,8 @@ setGeneric('changeWeatherRecords',
 #' @param object A WeaAna object.
 #' @param ... New weather records
 #' @return  A new WeaAna object with updated records
-#' @export
+#' @rdname changeWeatherRecords-methods
+#' @aliases changeWeatherRecords,WeaAna,WeaAna-method
 setMethod(f = 'changeWeatherRecords', 
     signature = c(object = 'WeaAna'),
     definition = function(object, ...)

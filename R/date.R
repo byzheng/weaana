@@ -2,11 +2,11 @@
 # * Created:   15:16 Tuesday, 16 August 2011
 # *
 
-#' Calculate day of year according to date
-#' 
-#' @param Date a string or date vector.
-#' @param format date format when Date is a string vector
-#' @export
+# Calculate day of year according to date
+# 
+# @param Date a string or date vector.
+# @param format date format when Date is a string vector
+# @export
 DOY <- function(Date, format = NULL)
 {
     if (is.null(format))

@@ -2,10 +2,10 @@
 # * Created:   01/02/2011
 # *
 
-#' Calculate number of frost day
-#' 
-#' @param object A WeaAna object.
-#' @param ... Not used
+# Calculate number of frost day
+# 
+# @param object A WeaAna object.
+# @param ... Not used
 setGeneric( "numberFrostDay", 
         function( object, ... )
         {
@@ -13,13 +13,13 @@ setGeneric( "numberFrostDay",
         }
 )
 
-#' Calculate number of frost day
-#'
-#' @docType methods
-#' @param object A WeaAna object.
-#' @param yrange The year range for statistics 
-#' @param stress The stress temperature for frost
-#' @export
+# Calculate number of frost day
+#
+# @docType methods
+# @param object A WeaAna object.
+# @param yrange The year range for statistics 
+# @param stress The stress temperature for frost
+# @export
 setMethod( f = "numberFrostDay", 
         signature = c( object = "WeaAna" ),
         definition = function( object,
@@ -35,12 +35,12 @@ setMethod( f = "numberFrostDay",
 )
 
 
-#' Calculate number of frost day
-#'
-#' @docType methods
-#' @param object A numeric object.
-#' @param stress The stress temperature for frost
-#' @export
+# Calculate number of frost day
+#
+# @docType methods
+# @param object A numeric object.
+# @param stress The stress temperature for frost
+# @export
 setMethod( f = "numberFrostDay", 
         signature = c( object = "numeric" ),
         definition = function( object, stress = waGetPara( "extreme$mint$frost.night$value" ) )

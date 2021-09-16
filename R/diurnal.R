@@ -20,6 +20,7 @@
 #' @param A is the time lag in temperature after noon
 #' @param B is coef that controls temperature decrease at night
 #' @param C is the time lag for min temperature after sunrise
+#' @return A vector with diurnal air temperature
 #' @examples
 #' diurnalT(maxt = 20, mint = 10, doy  = 1, 
 #'    hour = seq(from = 1, to = 23.99, by = 0.1), 

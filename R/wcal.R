@@ -2,10 +2,12 @@
 # * Created:   09/02/2011
 # *
 
-#' Calculate weather variables through function or a string formula.
-#'
-#' @param object A WeaAna objects.
-#' @param ... Not used
+# Calculate weather variables through function or a string formula.
+# 
+# @docType methods
+# @param object A WeaAna objects.
+# @param ... Not used
+# @rdname wcal-methods
 setGeneric( "wcal", 
         function( object, ... )
         {
@@ -13,26 +15,26 @@ setGeneric( "wcal",
         }
 )
 
-#' Calculate weather variables through function or a string formula.
-#'
-#' There are two modes to use \code{wcal}, function mode if \code{FUN} is not null, 
-#' and string formula mode if \code{FUN} is NULL.
-#' 
-#' @docType methods
-#' @param object A WeaAna objects.
-#' @param FUN A function to be used which results should have the same length as original records.
-#' @param ... Optional arguments to \code{FUN} in function mode. 
-#' String formulas if \code{FUN} is NULL.
-#' @param var.args Arguments of weather variable pass to \code{FUN}.
-#' @param var.name Variable name is used if \code{FUN} is not NULL.
-#' @examples
-#' library(weaana)
-#' data( "records" ) 
-#' # Daily mean temperature
-#' wcal( records, avgt2 = "( maxt + mint ) / 2" )
-#' # Moving average temperature
-#' wcal( records, FUN = mov.avg, var.args = "avgt", k = 5, shift = "begin", var.name = "mov.avg" )
-#' @export
+# Calculate weather variables through function or a string formula.
+#
+# There are two modes to use \code{wcal}, function mode if \code{FUN} is not null, 
+# and string formula mode if \code{FUN} is NULL.
+# 
+# @param object A WeaAna objects.
+# @param FUN A function to be used which results should have the same length as original records.
+# @param ... Optional arguments to \code{FUN} in function mode. 
+# String formulas if \code{FUN} is NULL.
+# @param var.args Arguments of weather variable pass to \code{FUN}.
+# @param var.name Variable name is used if \code{FUN} is not NULL.
+# @rdname wcal-methods
+# @aliases wcal,WeaAna,WeaAna-method
+# @examples
+# library(weaana)
+# data( "records" ) 
+# # Daily mean temperature
+# wcal( records, avgt2 = "( maxt + mint ) / 2" )
+# # Moving average temperature
+# wcal( records, FUN = mov.avg, var.args = "avgt", k = 5, shift = "begin", var.name = "mov.avg" )
 setMethod( f = "wcal", 
         signature = c( object = "WeaAna" ),
         definition = function( object, FUN = NULL, ..., var.args = NULL, var.name = NULL )
@@ -142,62 +144,3 @@ setMethod( f = "wcal",
 )
 
 
-#' Calculate weather variables through a string formula.
-#'
-#' @param x A data frame contained all weather records
-#' @param str A string function
-#' @param len The length of result
-wcalStr <- function( x, str = NULL, len = length( x[[1]] ) )
-{
-    temp.env <- new.env()
-    x.names <- names( x )
-    for ( j in seq( along = x.names ) )
-    {
-        assign( x.names[j], x[[x.names[j]]], envir = temp.env )
-    }
-    res <- eval( parse( text = as.character( str ) ), envir = temp.env )
-    
-    if ( length( res ) != len )
-    {
-        stop( "The result length is not equal to original length" )
-    }
-    return( res )
-}
-
-
-#' Calculate weather variables through a function.
-#'
-#' @param x A data frame contained all weather records
-#' @param FUN A function to be used which results should have the same length as original records.
-#' @param var.args Arguments of weather variable pass to \code{FUN}.
-#' @param other.args Optional arguments to \code{FUN}
-#' @param len The length of result
-wcalFun <- function( x, FUN, var.args,    other.args = NULL, len = length( x[[1]] ) )
-{
-    temp.env <- new.env()
-    x.names <- names( x )
-    for ( j in seq( along = x.names ) )
-    {
-        assign( x.names[j], x[[x.names[j]]], envir = temp.env )
-    }
-    
-    fun.args <- as.list( NULL )
-    for ( j in seq( along = var.args ) )
-    {
-        if ( var.args[j] %in% x.names )
-        {
-            fun.args[[j]] <- x[[var.args[j]]]
-        } else
-        {
-            stop( paste( "Can not find variable ", var.args[j], sep = "" ) )
-        }
-    }
-    fun.args <- c( fun.args, other.args )
-    res <- do.call( FUN, fun.args )
-    
-    if ( length( res ) != len )
-    {
-        stop( "The result length is not equal to original length" )
-    }
-    return( res )
-}

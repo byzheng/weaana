@@ -389,6 +389,7 @@ readSiteGHCN <- function(filename, ...)
 #' create WeaAna class
 #'
 #' @param mets A list contained information of weather records.
+#' @return A new WeaAna class
 #' @export
 createWeaAna <- function(mets)
 {

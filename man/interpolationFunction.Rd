@@ -15,6 +15,9 @@ interpolationFunction(x, y, values, split = "\\\\s+")
 
 \item{split}{split}
 }
+\value{
+The interpolated values
+}
 \description{
 Return a y value from a linear interpolation function
 }

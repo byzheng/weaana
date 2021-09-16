@@ -2,11 +2,6 @@
 # * Created:   21/01/2011
 # *
 
-#' Register name and type of new result
-#' 
-#' @param object A WeaAna object.
-#' @param name Name of result
-#' @param type Type of result
 setGeneric( "registerRes", 
         function( object, name, type )
         {
@@ -14,12 +9,6 @@ setGeneric( "registerRes",
         }
 )
 
-#' Register name and type of new result
-#'
-#' @docType methods
-#' @param object A WeaAna object.
-#' @param name Name of result
-#' @param type Type of result
 setMethod( f = "registerRes", 
         signature = c( object = "WeaAna", name = "character", type = "character" ),
         definition = function( object, name, type )
@@ -39,11 +28,6 @@ setMethod( f = "registerRes",
         }
 )
 
-
-#' Add new result name and type
-#' 
-#' @param object A result object.
-#' @param an.res Another result object.
 setGeneric( "addResult", 
         function( object, an.res )
         {
@@ -51,10 +35,6 @@ setGeneric( "addResult",
         }
 )
 
-#' Add new result name and type
-#' 
-#' @param object A result object.
-#' @param an.res Another result object.
 setMethod( f = "addResult", 
         signature = c( object = "result", an.res = "result" ),
         definition = function( object, an.res )

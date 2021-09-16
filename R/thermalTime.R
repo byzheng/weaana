@@ -11,7 +11,6 @@
 #' The default method is ( maxt + mint ) / 2 - base. 
 #' The three hour temperature methods will be used if method = '3hr'
 #' @return A data.frame with three columns: year, day and thermalTime.
-#' 
 #' @export
 #' @examples 
 #' met_file <- system.file("extdata/WeatherRecordsDemo1.met", package = "weaana")

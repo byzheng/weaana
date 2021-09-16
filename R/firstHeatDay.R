@@ -2,10 +2,10 @@
 # * Created:   20/01/2011
 # *
 
-#' Calculate the first heat day
-#' 
-#' @param object A WeaAna object.
-#' @param ... Not used
+# Calculate the first heat day
+# 
+# @param object A WeaAna object.
+# @param ... Not used
 setGeneric("firstHeatDay", 
         function(object, ...)
         {
@@ -13,16 +13,16 @@ setGeneric("firstHeatDay",
         }
 )
 
-#' Calculate the first heat day
-#'
-#' @docType methods
-#' @param object A WeaAna object.
-#' @param yrange The year range for statistics
-#' @param stress The stress temperature for frost
-#' @param conse Number of consecutive days
-#' @param offset offset
-#' The first heat day of each year will return if prob equal to NULL.
-#' @export
+# Calculate the first heat day
+#
+# @docType methods
+# @param object A WeaAna object.
+# @param yrange The year range for statistics
+# @param stress The stress temperature for frost
+# @param conse Number of consecutive days
+# @param offset offset
+# The first heat day of each year will return if prob equal to NULL.
+# @export
 setMethod(f = "firstHeatDay", 
         signature = c(object = "WeaAna"),
         definition = function(object, 
@@ -39,15 +39,15 @@ setMethod(f = "firstHeatDay",
         }
 )
 
-#' Calculate the first heat day
-#'
-#' @docType methods
-#' @param object A numeric object.
-#' @param stress The stress temperature for frost
-#' @param latitude Latitude of site.
-#' @param conse Number of consecutive days
-#' @param offset offset
-#' @export
+# Calculate the first heat day
+#
+# @docType methods
+# @param object A numeric object.
+# @param stress The stress temperature for frost
+# @param latitude Latitude of site.
+# @param conse Number of consecutive days
+# @param offset offset
+# @export
 setMethod(f = "firstHeatDay", 
         signature = c(object = "numeric"),
         definition = function(object, 

@@ -9,6 +9,9 @@ createWeaAna(mets)
 \arguments{
 \item{mets}{A list contained information of weather records.}
 }
+\value{
+A new WeaAna class
+}
 \description{
 create WeaAna class
 }

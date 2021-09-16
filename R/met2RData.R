@@ -2,14 +2,14 @@
 # * Created:   02/12/2010
 # *
 
-#' Convert met file to RData files
-#' 
-#' @param dataFiles A character vector to specify the path of weather data files.
-#' @param dataFolders A character vector to specify the path of weather data folders. 
-#' @param outputFolder All RData files would be put into this folder. The default position
-#' @param dataFormat The format of weather data file. 
-#' is the original folder
-#' @export 
+# Convert met file to RData files
+# 
+# @param dataFiles A character vector to specify the path of weather data files.
+# @param dataFolders A character vector to specify the path of weather data folders. 
+# @param outputFolder All RData files would be put into this folder. The default position
+# @param dataFormat The format of weather data file. 
+# is the original folder
+# @export 
 Met2RData <- function( dataFiles = NULL, dataFolders = NULL, 
         outputFolder = NULL, dataFormat = "APSIM"
         )

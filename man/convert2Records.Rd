@@ -11,6 +11,9 @@ convert2Records(infor, records)
 
 \item{records}{A data frame will convert to records}
 }
+\value{
+A new WeaAna object
+}
 \description{
 Convert a data frame to weaana class
 }

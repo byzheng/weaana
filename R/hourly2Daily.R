@@ -3,10 +3,10 @@
 # * Copyright: AS IS
 # *
 
-#' Convert hourly weather records for daily APSIM format
-#'
-#' @param records hourly weather records
-#' @export
+# Convert hourly weather records for daily APSIM format
+#
+# @param records hourly weather records
+# @export
 hourly2Daily <- function(records)
 {
     names(records) <- tolower(names(records))

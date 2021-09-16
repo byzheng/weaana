@@ -2,10 +2,10 @@
 # * Created:   01/02/2011
 # *
 
-#' Calculate number of heat day
-#' 
-#' @param object A WeaAna object.
-#' @param ... Not used
+# Calculate number of heat day
+# 
+# @param object A WeaAna object.
+# @param ... Not used
 setGeneric( "numberHeatDay", 
         function( object, ... )
         {
@@ -13,13 +13,13 @@ setGeneric( "numberHeatDay",
         }
 )
 
-#' Calculate number of heat day
-#'
-#' @docType methods
-#' @param object A WeaAna object.
-#' @param yrange The year range for statistics 
-#' @param stress The stress temperature for heat
-#' @export
+# Calculate number of heat day
+#
+# @docType methods
+# @param object A WeaAna object.
+# @param yrange The year range for statistics 
+# @param stress The stress temperature for heat
+# @export
 setMethod( f = "numberHeatDay", 
         signature = c( object = "WeaAna" ),
         definition = function( object,
@@ -35,12 +35,12 @@ setMethod( f = "numberHeatDay",
         }
 )
 
-#' Calculate number of heat day
-#'
-#' @docType methods
-#' @param object A numeric object. 
-#' @param stress The stress temperature for heat
-#' @export
+# Calculate number of heat day
+#
+# @docType methods
+# @param object A numeric object. 
+# @param stress The stress temperature for heat
+# @export
 setMethod( f = "numberHeatDay", 
         signature = c( object = "numeric" ),
         definition = function( object, stress = waGetPara( "extreme$maxt$hot.day$value" ) )

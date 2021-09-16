@@ -2,13 +2,13 @@
 # * Created:   04/05/2010
 # *
 
-#' Get all file path from a vector of files and folders
-#' 
-#' @param dataFiles A vector of weather data files
-#' @param dataFolders A vector of weather data folders
-#' @param dataFormat The format for weather data files. 
-#' "dataFroamt" should be One of "APSIM" and "RDATA". 
-#' @return A vector of all file path
+# Get all file path from a vector of files and folders
+# 
+# @param dataFiles A vector of weather data files
+# @param dataFolders A vector of weather data folders
+# @param dataFormat The format for weather data files. 
+# "dataFroamt" should be One of "APSIM" and "RDATA". 
+# @return A vector of all file path
 fileList <- function( dataFiles = NULL, dataFolders = NULL, dataFormat = "APSIM" )
 {
     file.suffix <- NULL
@@ -65,10 +65,10 @@ fileList <- function( dataFiles = NULL, dataFolders = NULL, dataFormat = "APSIM"
     return( unique( fileLists ) )
 }
 
-#' Get all file name from a vector of files
-#' 
-#' @param fileLists A vector of files
-#' @return A vector of file name
+# Get all file name from a vector of files
+# 
+# @param fileLists A vector of files
+# @return A vector of file name
 siteList <- function( fileLists = NULL )
 {
     siteLists <- NULL

@@ -5,7 +5,7 @@
 #' Convert a data frame to weaana class
 #' @param infor A list or data frame of site information
 #' @param records A data frame will convert to records
-
+#' @return A new WeaAna object
 #' @export 
 convert2Records <- function( infor, records )
 {

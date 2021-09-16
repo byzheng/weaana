@@ -3,10 +3,10 @@
 # * Copyright: AS IS
 # *
 
-#' Calculate the first frost event
-#' 
-#' @param object A WeaAna object.
-#' @param ... Not used
+# Calculate the first frost event
+# 
+# @param object A WeaAna object.
+# @param ... Not used
 setGeneric("firstFrostDay", 
         function(object, ...)
         {
@@ -14,13 +14,13 @@ setGeneric("firstFrostDay",
         }
 )
 
-#' Calculate the last frost
-#'
-#' @docType methods
-#' @param object A WeaAna object.
-#' @param yrange The year range for statistics 
-#' @param stress The stress temperature for frost
-#' @export
+# Calculate the last frost
+#
+# @docType methods
+# @param object A WeaAna object.
+# @param yrange The year range for statistics 
+# @param stress The stress temperature for frost
+# @export
 setMethod(f = "firstFrostDay", 
         signature = c(object = "WeaAna"),
         definition = function(object,
@@ -38,13 +38,13 @@ setMethod(f = "firstFrostDay",
 )
 
 
-#' Calculate the last frost
-#'
-#' @docType methods
-#' @param object A numeric object.
-#' @param stress The stress temperature for frost
-#' @param latitude Latitude of site.
-#' @export
+# Calculate the last frost
+#
+# @docType methods
+# @param object A numeric object.
+# @param stress The stress temperature for frost
+# @param latitude Latitude of site.
+# @export
 setMethod(f = "firstFrostDay", 
         signature = c(object = "numeric"),
         definition = function(object,
