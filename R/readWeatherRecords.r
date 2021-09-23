@@ -26,7 +26,7 @@ newPointer <- function(value)
 #' "dataFroamt" should be One of "APSIM" and "RDATA". 
 #' @param ... Other arguments
 #' @return A WeaAna class which contains all weather data.
-#' @export readWeatherRecords
+#' @export
 #' 
 #' @rdname readWeatherRecords
 readWeatherRecords <- function(dataFiles = NULL, 

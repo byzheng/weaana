@@ -22,6 +22,7 @@ setGeneric('writeWeatherRecords',
 #' @param file Path of output file.
 #' @param cols Columns to export. All columns exported if NULL
 #' @return No return values
+#' @export
 #' @rdname writeWeatherRecords-methods
 #' @aliases writeWeatherRecords,WeaAna,WeaAna-method
 setMethod(f = 'writeWeatherRecords', 
