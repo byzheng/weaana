@@ -2,13 +2,12 @@
 # * Created:   12/16/2010
 # *
 
-#' Create new pointer object
-#' 
-#' @param value The value for this pointer
-#' @return A new pointer to value
-#' 
-#' @rdname readWeatherRecords
-#' @export 
+# Create new pointer object
+# 
+# @param value The value for this pointer
+# @return A new pointer to value
+# 
+# @rdname readWeatherRecords
 newPointer <- function(value)
 { 
     object <- new.env(parent = globalenv()) 
@@ -94,14 +93,14 @@ readWeatherRecords <- function(dataFiles = NULL,
     return(records)
 }
 
-#' Read weather records from a weather data file
-#' 
-#' @param filename The file name of weather data file.
-#' @param dataFormat The format of weather data file.
-#' @param ... Other arguments
-#' @return A WeaAnaSite class which contains all weather data.
-#' @export 
-#' @rdname readWeatherRecords
+# Read weather records from a weather data file
+# 
+# @param filename The file name of weather data file.
+# @param dataFormat The format of weather data file.
+# @param ... Other arguments
+# @return A WeaAnaSite class which contains all weather data.
+# @export 
+# @rdname readWeatherRecords
 readSite <- function(filename, dataFormat = "APSIM", ...)
 {    
     record <- NULL
@@ -121,12 +120,12 @@ readSite <- function(filename, dataFormat = "APSIM", ...)
     return(record)
 }
 
-#' Read weather records from a weather data file with APSIM format
-#' 
-#' @param filename The file name of weather data file.
-#' @return A WeaAnaSite class which contains all weather data.
-#' 
-#' @rdname readWeatherRecords
+# Read weather records from a weather data file with APSIM format
+# 
+# @param filename The file name of weather data file.
+# @return A WeaAnaSite class which contains all weather data.
+# 
+# @rdname readWeatherRecords
 readSiteAPSIM <- function(filename)
 {    
     a <- NULL
@@ -260,12 +259,12 @@ readSiteAPSIM <- function(filename)
     return(records)
 }
 
-#' Read weather records from a weather data file with RDATA format
-#' 
-#' @param filename The file name of weather data file.
-#' @return A WeaAnaSite class which contains all weather data.
-#' 
-#' @rdname readWeatherRecords
+# Read weather records from a weather data file with RDATA format
+# 
+# @param filename The file name of weather data file.
+# @return A WeaAnaSite class which contains all weather data.
+# 
+# @rdname readWeatherRecords
 readSiteRDATA <- function(filename)
 {    
     temp.env <- new.env()
@@ -310,13 +309,13 @@ readSiteRDATA <- function(filename)
     return(record)
 }
 
-#' Read weather records from a weather data file with GHCN format
-#' 
-#' @param filename The file name of weather data file.
-#' @param ... Other arguments for site information
-#' @return A WeaAnaSite class which contains all weather data.
-#' 
-#' @rdname readWeatherRecords
+# Read weather records from a weather data file with GHCN format
+# 
+# @param filename The file name of weather data file.
+# @param ... Other arguments for site information
+# @return A WeaAnaSite class which contains all weather data.
+# 
+# @rdname readWeatherRecords
 readSiteGHCN <- function(filename, ...)
 {   
     
