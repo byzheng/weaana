@@ -13,9 +13,9 @@ name: pkgdown
 jobs:
   pkgdown:
     if: github.event_name == 'push' || github.event.pull_request.head.repo.fork == false
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     env:
-      RSPM: https://packagemanager.rstudio.com/cran/__linux__/bionic/latest
+      RSPM: https://packagemanager.rstudio.com/cran/__linux__/bionic/release
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       isPush: ${{ github.event_name == 'push' }}
 
