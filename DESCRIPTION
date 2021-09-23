@@ -3,7 +3,8 @@ Maintainer: Bangyou Zheng <bangyou.zheng@csiro.au>
 Title: Analysis the Weather Data
 Type: Package
 Description: Functions are collected to analyse weather data for agriculture 
-    purposes including to to in multiple formats, calculate extreme climate index.
+    purposes including to read weather records in multiple formats, 
+    calculate extreme climate index.
 Authors@R: person("Bangyou", "Zheng", 
                email = "bangyou.zheng@csiro.au", 
                role = c("aut", "cre"))
@@ -26,8 +27,5 @@ Imports: methods,
     dplyr,
     tibble
 RoxygenNote: 7.1.2
-VignetteBuilder: knitr
 Suggests: 
-    knitr,
-    rmarkdown,
     testthat
