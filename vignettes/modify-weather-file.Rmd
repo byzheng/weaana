@@ -55,7 +55,7 @@ changeWeatherRecords(met, rain = new_rain)
 ```
 
 Finally the new met file is saved into a new file
-```{r save-file, echo=FALSE}
+```{r save-file, eval=FALSE}
 writeWeatherRecords(met, "new-file.met")
 ```
 
