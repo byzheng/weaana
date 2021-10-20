@@ -25,6 +25,7 @@ setGeneric('changeWeatherRecords',
 #' @return  A new WeaAna object with updated records
 #' @rdname changeWeatherRecords-methods
 #' @aliases changeWeatherRecords,WeaAna,WeaAna-method
+#' @export
 setMethod(f = 'changeWeatherRecords', 
     signature = c(object = 'WeaAna'),
     definition = function(object, ...)

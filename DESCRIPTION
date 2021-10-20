@@ -28,4 +28,7 @@ Imports: methods,
     tibble
 RoxygenNote: 7.1.2
 Suggests: 
+    rmarkdown,
+    knitr,
     testthat
+VignetteBuilder: knitr

@@ -11,9 +11,9 @@ test_that("Thermal time", {
     expect_equal(res, c(9.279687499999, 8.7905625000000), tolerance=1e-3)
     
     met_file <- system.file("extdata/WeatherHourly.csv", package = "weaana")
-    hourly <- read.csv(met_file, as.is = TRUE) %>%
-        tibble() %>%
-        mutate(timestamp = as.POSIXct(timestamp, format = "%Y-%m-%dT%H:%M:%SZ"))
+    hourly <- read.csv(met_file, as.is = TRUE)
+
+    hourly$timestamp <- as.POSIXct(hourly$timestamp, format = "%Y-%m-%dT%H:%M:%SZ")
     x_temp <- c(0, 20, 35)
     y_temp <- c(0, 20, 0)
     res <- thermalTimeHourly(hourly$timestamp, hourly$temperature, x_temp, y_temp)
