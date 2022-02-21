@@ -1,13 +1,10 @@
-# * Author:    Bangyou Zheng (Bangyou.Zheng@csiro.au)
-# * Created:   09/02/2011
-# *
-
-# Calculate weather variables through function or a string formula.
-# 
-# @docType methods
-# @param object A WeaAna objects.
-# @param ... Not used
-# @rdname wcal-methods
+#' Calculate weather variables through function or a string formula.
+#' 
+#' @docType methods
+#' @param object A WeaAna objects.
+#' @param ... Not used
+#' @rdname wcal-methods
+#' @export
 setGeneric( "wcal", 
         function( object, ... )
         {
@@ -15,26 +12,27 @@ setGeneric( "wcal",
         }
 )
 
-# Calculate weather variables through function or a string formula.
-#
-# There are two modes to use \code{wcal}, function mode if \code{FUN} is not null, 
-# and string formula mode if \code{FUN} is NULL.
-# 
-# @param object A WeaAna objects.
-# @param FUN A function to be used which results should have the same length as original records.
-# @param ... Optional arguments to \code{FUN} in function mode. 
-# String formulas if \code{FUN} is NULL.
-# @param var.args Arguments of weather variable pass to \code{FUN}.
-# @param var.name Variable name is used if \code{FUN} is not NULL.
-# @rdname wcal-methods
-# @aliases wcal,WeaAna,WeaAna-method
-# @examples
-# library(weaana)
-# data( "records" ) 
-# # Daily mean temperature
-# wcal( records, avgt2 = "( maxt + mint ) / 2" )
-# # Moving average temperature
-# wcal( records, FUN = mov.avg, var.args = "avgt", k = 5, shift = "begin", var.name = "mov.avg" )
+#' Calculate weather variables through function or a string formula.
+#'
+#' There are two modes to use \code{wcal}, function mode if \code{FUN} is not null, 
+#' and string formula mode if \code{FUN} is NULL.
+#' 
+#' @param object A WeaAna objects.
+#' @param FUN A function to be used which results should have the same length as original records.
+#' @param ... Optional arguments to \code{FUN} in function mode. 
+#' String formulas if \code{FUN} is NULL.
+#' @param var.args Arguments of weather variable pass to \code{FUN}.
+#' @param var.name Variable name is used if \code{FUN} is not NULL.
+#' @rdname wcal-methods
+#' @aliases wcal,WeaAna,WeaAna-method
+#' @export
+#' @examples
+#' library(weaana)
+#' data( "records" ) 
+#' # Daily mean temperature
+#' wcal( records, avgt2 = "( maxt + mint ) / 2" )
+#' # Moving average temperature
+#' wcal( records, FUN = mov.avg, var.args = "avgt", k = 5, shift = "begin", var.name = "mov.avg" )
 setMethod( f = "wcal", 
         signature = c( object = "WeaAna" ),
         definition = function( object, FUN = NULL, ..., var.args = NULL, var.name = NULL )
@@ -43,7 +41,7 @@ setMethod( f = "wcal",
             # check arguments
             funs <- NULL
             n.funs <- NULL
-            if ( is.null( FUN ) )# for string mode
+            if ( is.null( FUN ) )#' for string mode
             {
                 # check functions
                 funs <- list( ... )
