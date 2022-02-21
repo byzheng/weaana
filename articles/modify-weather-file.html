@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">weaana</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -64,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/byzheng/weaana/">
+  <a href="https://github.com/byzheng/weaana/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -85,7 +81,7 @@
       <h1 data-toc-skip>Modify Weather File</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/byzheng/weaana/blob/master/vignettes/modify-weather-file.Rmd"><code>vignettes/modify-weather-file.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/byzheng/weaana/blob/HEAD/vignettes/modify-weather-file.Rmd" class="external-link"><code>vignettes/modify-weather-file.Rmd</code></a></small>
       <div class="hidden name"><code>modify-weather-file.Rmd</code></div>
 
     </div>
@@ -94,36 +90,36 @@
     
 <p>This vignette shows how to apply monthly changes into a weather file for climate scenarios.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://weaana.bangyou.me/">weaana</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://weaana.bangyou.me/" class="external-link">weaana</a></span><span class="op">)</span></code></pre></div>
 <p>The daily weather records are stored in the apsim format.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata/WeatherRecordsDemo1.met"</span>, package <span class="op">=</span> <span class="st">"weaana"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/WeatherRecordsDemo1.met"</span>, package <span class="op">=</span> <span class="st">"weaana"</span><span class="op">)</span>
 <span class="co"># Read weather file</span>
 <span class="va">met</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/readWeatherRecords.html">readWeatherRecords</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span>
 <span class="co"># Get records in data.frame</span>
-<span class="va">records</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getWeatherRecords.html">getWeatherRecords</a></span><span class="op">(</span><span class="va">met</span><span class="op">)</span>
+<span class="va">records</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getWeatherRecords-methods.html">getWeatherRecords</a></span><span class="op">(</span><span class="va">met</span><span class="op">)</span>
 <span class="co"># Calculate month from weather records</span>
-<span class="va">month</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">records</span><span class="op">$</span><span class="va">date</span>, <span class="st">'%m'</span><span class="op">)</span><span class="op">)</span>
+<span class="va">month</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">records</span><span class="op">$</span><span class="va">date</span>, <span class="st">'%m'</span><span class="op">)</span><span class="op">)</span>
    </code></pre></div>
 <p>The monthly changes of future climate can be obtained from future climate scenarios.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 <span class="co"># maximum and minimum temperature changes are absolute values</span>
-<span class="va">tasmax</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span>
-<span class="va">tasmin</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span>
+<span class="va">tasmax</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span>
+<span class="va">tasmin</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span>
 <span class="co"># rain changes are a ratio</span>
-<span class="va">pr</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">/</span> <span class="fl">10</span></code></pre></div>
+<span class="va">pr</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">/</span> <span class="fl">10</span></code></pre></div>
 <p>Add the monthly changes into weather records</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">new_maxt</span> <span class="op">&lt;-</span> <span class="va">records</span><span class="op">$</span><span class="va">maxt</span> <span class="op">+</span> <span class="va">tasmax</span><span class="op">[</span><span class="va">month</span><span class="op">]</span>
 <span class="va">new_mint</span> <span class="op">&lt;-</span> <span class="va">records</span><span class="op">$</span><span class="va">mint</span> <span class="op">+</span> <span class="va">tasmin</span><span class="op">[</span><span class="va">month</span><span class="op">]</span>
 <span class="va">new_rain</span> <span class="op">&lt;-</span> <span class="va">records</span><span class="op">$</span><span class="va">rain</span> <span class="op">*</span> <span class="va">pr</span><span class="op">[</span><span class="va">month</span><span class="op">]</span>
-<span class="fu"><a href="../reference/changeWeatherRecords.html">changeWeatherRecords</a></span><span class="op">(</span><span class="va">met</span>, maxt <span class="op">=</span> <span class="va">new_maxt</span><span class="op">)</span>
-<span class="fu"><a href="../reference/changeWeatherRecords.html">changeWeatherRecords</a></span><span class="op">(</span><span class="va">met</span>, mint <span class="op">=</span> <span class="va">new_mint</span><span class="op">)</span>
-<span class="fu"><a href="../reference/changeWeatherRecords.html">changeWeatherRecords</a></span><span class="op">(</span><span class="va">met</span>, rain <span class="op">=</span> <span class="va">new_rain</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="../reference/changeWeatherRecords-methods.html">changeWeatherRecords</a></span><span class="op">(</span><span class="va">met</span>, maxt <span class="op">=</span> <span class="va">new_maxt</span><span class="op">)</span>
+<span class="fu"><a href="../reference/changeWeatherRecords-methods.html">changeWeatherRecords</a></span><span class="op">(</span><span class="va">met</span>, mint <span class="op">=</span> <span class="va">new_mint</span><span class="op">)</span>
+<span class="fu"><a href="../reference/changeWeatherRecords-methods.html">changeWeatherRecords</a></span><span class="op">(</span><span class="va">met</span>, rain <span class="op">=</span> <span class="va">new_rain</span><span class="op">)</span></code></pre></div>
 <p>Finally the new met file is saved into a new file</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/writeWeatherRecords.html">writeWeatherRecords</a></span><span class="op">(</span><span class="va">met</span>, <span class="st">"new-file.met"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../reference/writeWeatherRecords-methods.html">writeWeatherRecords</a></span><span class="op">(</span><span class="va">met</span>, <span class="st">"new-file.met"</span><span class="op">)</span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -135,11 +131,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Bangyou Zheng.</p>
+  <p></p>
+<p>Developed by Bangyou Zheng.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -147,6 +145,8 @@
 
   
 
+
+  
 
   </body>
 </html>
