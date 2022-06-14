@@ -275,7 +275,7 @@ readSiteRDATA <- function(filename)
     }
     record <- NULL
     temp.records <- get(vars[1], envir = temp.env)
-    if (class(temp.records) == "WeaAna")
+    if (inherits(temp.records, "WeaAna"))
     {
         if (temp.records@num > 1)
         {
