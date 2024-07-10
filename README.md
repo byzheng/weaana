@@ -17,6 +17,6 @@
 Currently on [Github](https://github.com/byzheng/weaana) only. Install with:
 
 ```r
-devtools::install_github('byzheng/weaana')
+remotes::install_github('byzheng/weaana')
 ```
 
