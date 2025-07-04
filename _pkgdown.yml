@@ -1,4 +1,6 @@
+url: https://weaana.bangyou.me/
 template:
+  bootstrap: 5
   includes:
     in_header: |
         <!-- Google tag (gtag.js) -->
