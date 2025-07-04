@@ -26,7 +26,7 @@ Imports: methods,
     rlang,
     dplyr,
     tibble
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.2
 Suggests: 
     rmarkdown,
     knitr,
