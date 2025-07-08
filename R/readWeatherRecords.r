@@ -113,6 +113,8 @@ readSite <- function(filename, dataFormat = "APSIM", ...)
     } else if (dataFormat == 'GHCN')
     {
         record <- readSiteGHCN(filename, ...)
+    } else if (dataFormat == "STANDARD") {
+        record <- readSiteSILOStandard(filename, ...)
     } else
     {
         stop ("Wrong data format!")
@@ -258,6 +260,125 @@ readSiteAPSIM <- function(filename)
     gc()
     return(records)
 }
+
+# Read weather records from a weather data file with SILO standard format
+# 
+# @param filename The file name of weather data file.
+# @return A WeaAnaSite class which contains all weather data.
+# 
+# @rdname readWeatherRecords
+readSiteSILOStandard <- function(filename) {    
+    stopifnot(file.exists(filename))
+    a <- NULL
+    station.number <- as.character(NA)
+    station.name <- as.character(NA)
+    latitude <- as.numeric(NA)
+    longitude <- as.numeric(NA)
+    temp <- readLines(filename, n = 100)
+
+    # Extract station info from SILO standard header line
+    # Try to match "Patched Point data for station" first
+    pp_line <- grep("^.*Patched Point data for station:", temp, value = TRUE)
+    dd_line <- grep("^.*Data Drill for Lat, Long:", temp, value = TRUE)
+    if (length(pp_line) > 0) {
+        # Extract station number and name
+        station.number <- trimws(sub("^.*Patched Point data for station: *([0-9]+) .*", "\\1", pp_line))
+        station.name <- trimws(sub("^.*Patched Point data for station: *[0-9]+ (.+?) *Lat:.*$", "\\1", pp_line))
+        # Extract latitude and longitude
+        latlon <- sub(".*Lat: *(-?\\d+\\.?\\d*) Long: *(-?\\d+\\.?\\d*).*", "\\1|\\2", pp_line)
+        latitude <- as.numeric(strsplit(latlon, "\\|")[[1]][1])
+        longitude <- as.numeric(strsplit(latlon, "\\|")[[1]][2])
+    } else if (length(dd_line) > 0) {
+        # Extract latitude and longitude
+        latlon <- sub("^.*Data Drill for Lat, Long: *(-?\\d+\\.?\\d*) +(-?\\d+\\.?\\d*) .*", "\\1|\\2", dd_line)
+        latitude <- as.numeric(strsplit(latlon, "\\|")[[1]][1])
+        longitude <- as.numeric(strsplit(latlon, "\\|")[[1]][2])
+    }
+    tav <- -999
+    amp <- -999 
+    
+    # for year 
+    start.line <- grep("^Date", temp)
+    if (length(start.line)  == 0) {
+        stop("Keywords year or date are not found.")
+    }
+
+    a <- utils::read.table(filename, header = FALSE, sep = "", skip = start.line + 1,
+        col.names = scan(filename, "", sep = "", skip = start.line - 1, nlines = 1,
+            quiet = TRUE),
+        as.is = TRUE)
+    names(a) <- tolower(names(a))
+    # Convert date
+    if (!is.null(a$date)) {
+        date_format <- scan(filename, "", sep = "", skip = start.line, nlines = 1,
+                            quiet = TRUE)
+        date_format <- date_format[which(names(a) == "date")]
+        if (nchar(date_format) == 0) {
+            stop("Date format is not found")
+        }
+        date_format <- gsub("(\\(|\\))", "", date_format)
+        date_format <- "%Y%m%d"
+        a$date <- as.Date(as.character(a$date), format = date_format)
+        if (sum(is.na(a$date)) > 0) {
+            stop("NA values are found for date columns.")
+        }
+        a$year <- format(a$date, "%Y")
+        a$day <- format(a$date, "%j")
+    }
+    a$year <- as.numeric(a$year)
+    a$day <- as.numeric(a$day)
+    if (!is.null(a$date2)) {
+        a$date2 <- NULL
+    }
+    if (!is.null(a$pan)) {
+        a$evap <- a$pan
+    }
+    
+    extra <- NULL
+    a$maxt <- as.numeric(a$t.max)
+    a$mint <- as.numeric(a$t.min)
+    a$radn <- as.numeric(a$radn)
+    a$rain <- as.numeric(a$rain)
+    if (!is.null(a$evap)) {
+        
+        a$evap <- as.numeric(a$evap)
+    }
+    if (is.null(a$avgt)) {
+        extra$avgt <- (a$maxt + a$mint) / 2
+    } else {
+        extra$avgt <- a$avgt
+    }
+    if (is.null(a$vpd)) {
+        extra$vpd <- vpd.apsim(a$maxt, a$mint)
+    } else {
+        extra$vpd <- a$vpd
+    }
+    extra$rhmaxt <- a$rhmaxt
+    extra$rhmint <- a$rhmint
+    records <- methods::new("WeaAnaSite", name  =  station.name,
+            number  =  station.number,
+            latitude  =  latitude,
+            longitude  =  longitude,
+            tav = tav,
+            amp = amp,
+            year = as.numeric(a$year),
+            day = as.numeric(a$day),
+            radn = as.numeric(a$radn),
+            maxt = as.numeric(a$maxt),
+            mint = as.numeric(a$mint),
+            rain = as.numeric(a$rain),
+            evap = as.numeric(a$evap),
+            vp = as.numeric(a$vp),
+            code = as.character(a$code),
+            extra = extra,
+            file.path = filename,
+            data.format = "APSIM",
+            load.later = FALSE)
+    rm(a, temp)
+    gc()
+    return(records)
+}
+
 
 # Read weather records from a weather data file with RDATA format
 # 
