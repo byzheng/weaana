@@ -269,13 +269,13 @@ climate_by_stages <- function(climates, sowing, emergence,
     res <- phenology_sim %>% 
         dplyr::select(-dplyr::contains('date')) %>% 
         dplyr::left_join(wea_sta_stage, by = 'idx') %>% 
-        dplyr::select(-.data$idx) %>% 
+        dplyr::select(-"idx") %>% 
         tibble::tibble()
     # Join with original input
     res <- phenology_ori %>% 
         dplyr::left_join(res, 
         by = c('tmp_sowing', 'tmp_emergence', 'tmp_heading', 'tmp_flowering', 'tmp_maturity')) %>% 
-        dplyr::select(-.data$tmp_sowing, -.data$tmp_emergence, -.data$tmp_heading, -.data$tmp_flowering, -.data$tmp_maturity) %>% 
+        dplyr::select(-"tmp_sowing", -"tmp_emergence", -"tmp_heading", -"tmp_flowering", -"tmp_maturity") %>% 
         tibble::tibble()
     res    
 }

@@ -18,8 +18,9 @@ test_that("Weather records with SILO standard format", {
   site_info <- siteInfor(records)
   expect_equal(site_info$Number, "72150")
 
-  filename <- "inst/extdata/drill_-35_147.txt"
+  file <- system.file("extdata/drill_-35_147.txt", package = "weaana")
   records <- readWeatherRecords(file, dataFormat = "STANDARD")
   site_info <- siteInfor(records)
-  expect_equal(site_info$Number, "72150")
+  expect_equal(site_info$Latitude, -35)
+  expect_equal(site_info$Longitude, 147)
 })

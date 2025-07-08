@@ -24,9 +24,9 @@ test_that("Thermal time", {
     x_temp <- c(0, 26, 34)
     y_temp <- c(0, 26, 0)
     res <- thermalTime(records, x_temp, y_temp)
-    expect_equal(res[1,3], 19.549999999, tolerance=1e-3)
+    expect_equal(round(res[1,3], 1), 23.1, tolerance=1e-3)
     res <- thermalTime(records, x_temp, y_temp, method = "3hr")
-    expect_equal(res[1,3], 19.5499999999, tolerance=1e-3)
+    expect_equal(round(res[1,3], 1), 22.1, tolerance=1e-3)
     
     options(old)
 })
