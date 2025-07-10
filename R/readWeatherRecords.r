@@ -237,6 +237,12 @@ readSiteAPSIM <- function(filename)
     {
         extra$vpd <- a$vpd
     }
+    if (!is.null(a$rhmint)) {
+        extra$rhmint <- a$rhmint
+    }
+    if (!is.null(a$rhmaxt)) {
+        extra$rhmaxt <- a$rhmaxt
+    }
     records <- methods::new("WeaAnaSite", name  =  station.name,
             number  =  station.number,
             latitude  =  latitude,
