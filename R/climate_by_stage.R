@@ -82,7 +82,7 @@ climate_by_stages <- function(climates, sowing, emergence,
             "sum.rain.index.name", "hot.days.index.name", "very.hot.days.index.name", "frost.days.index.name", "ptq.index.name")
 
     sta_vars <- c(sta_vars, sta_vars_index)
-    if (class(sowing) != "Date") {
+    if (!inherits(sowing, "Date")) {
         stop("sowing should be Date format")
     }
     if (is.null(heading) && is.null(flowering)) {

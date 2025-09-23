@@ -5,7 +5,7 @@ Type: Package
 Description: Functions are collected to analyse weather data for agriculture 
     purposes including to read weather records in multiple formats, 
     calculate extreme climate index. Demonstration data are included the
-    SILO daily climate data (licensed under CC BY 4.0, https://www.longpaddock.qld.gov.au/silo/).
+    SILO daily climate data (licensed under CC BY 4.0, <https://www.longpaddock.qld.gov.au/silo/>).
 Authors@R: person("Bangyou", "Zheng", 
                email = "bangyou.zheng@csiro.au", 
                role = c("aut", "cre"))
@@ -14,8 +14,8 @@ URL: https://weaana.bangyou.me/,
     https://github.com/byzheng/weaana
 BugReports: https://github.com/byzheng/weaana/issues
 Encoding: UTF-8
-Version: 0.2.0
-Date: 2021-09-06
+Version: 0.3.0
+Date: 2025-09-20
 LazyData: true
 Depends: R (>= 4.1.0)
 Imports: methods, 

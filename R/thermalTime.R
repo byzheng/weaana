@@ -23,7 +23,7 @@
 #' head(res)
 thermalTime <- function(weather, x_temp, y_temp, method = NULL)
 {
-    if (class(weather) != "WeaAna") {
+    if (!inherits(weather, "WeaAna")) {
         stop("WeaAna class is required.")
     }
     res <- NULL
@@ -120,7 +120,7 @@ thermalTimeDaily <- function(mint, maxt, x_temp, y_temp,
 #' y_temp <- c(0, 20, 0)
 #' thermalTimeHourly(hourly$timestamp, hourly$temperature, x_temp, y_temp)
 thermalTimeHourly <- function(timestamp, temperature, x_temp, y_temp)  {
-    if (!("POSIXct" %in% class(timestamp))) {
+    if (!inherits(timestamp, "POSIXct")) {
         stop("POSIXct class is required for timestamp")
     }
     if (length(timestamp) != length(temperature)) {
