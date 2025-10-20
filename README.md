@@ -1,7 +1,7 @@
 # Weather analysis
 
 [![](https://www.r-pkg.org/badges/version/weaana?color=green)](https://cran.r-project.org/package=weaana)
-![R-CMD-check](https://github.com/byzheng/weaana/workflows/R-CMD-check/badge.svg) 
+[![R-CMD-check.yaml](https://github.com/byzheng/weaana/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/byzheng/weaana/actions/workflows/R-CMD-check.yaml)
 
 [![](http://cranlogs.r-pkg.org/badges/grand-total/weaana?color=green)](https://cran.r-project.org/package=weaana)
 [![](http://cranlogs.r-pkg.org/badges/last-month/weaana?color=green)](https://cran.r-project.org/package=weaana)
