@@ -1,5 +1,6 @@
 url: https://weaana.bangyou.me/
 template:
+  math-rendering: mathjax
   bootstrap: 5
   includes:
     in_header: |

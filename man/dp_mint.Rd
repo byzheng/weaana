@@ -2,24 +2,27 @@
 % Please edit documentation in R/dew_point.R
 \name{dp_mint}
 \alias{dp_mint}
-\title{Calculate Dew Point Temperature from Minimum Temperature and Relative Humidity}
+\title{Estimate Dew Point Temperature from Minimum Air Temperature and Relative Humidity}
 \usage{
 dp_mint(mint, minrh)
 }
 \arguments{
-\item{mint}{Numeric. Minimum air temperature in degrees Celsius.}
+\item{mint}{Numeric. Minimum air temperature (°C).}
 
-\item{minrh}{Numeric. Relative humidity (\%) at minimum temperature.}
+\item{minrh}{Numeric. Relative humidity (\%) corresponding to the minimum temperature.}
 }
 \value{
-Numeric. Dew point temperature in degrees Celsius.
+Numeric. Dew point temperature (°C).
 }
 \description{
-This function estimates the dew point temperature (C) using the Magnus-Tetens approximation,
-based on the minimum air temperature and relative humidity at that time.
+Computes the dew point temperature (°C) using the \strong{Magnus–Tetens approximation},
+a widely used empirical relationship between air temperature, relative humidity,
+and the saturation vapor pressure of water vapor. The method provides a good
+approximation for typical atmospheric conditions and is suitable for most
+meteorological and agricultural applications.
 }
 \details{
-The dew point temperature is calculated using the following equations:
+The dew point temperature is estimated using the Magnus–Tetens equation:
 
 \deqn{
 \gamma = \frac{a \cdot T}{b + T} + \ln\left(\frac{RH}{100}\right)
@@ -28,9 +31,24 @@ The dew point temperature is calculated using the following equations:
 T_{dew} = \frac{b \cdot \gamma}{a - \gamma}
 }
 
-where \eqn{a = 17.62} and \eqn{b = 243.12}.
+where \eqn{T} is air temperature (°C), \eqn{RH} is relative humidity (\%),
+and the empirical constants are \eqn{a = 17.62} and \eqn{b = 243.12} (for water over a
+liquid surface). This formulation is based on improvements to the original
+Magnus equation proposed by \strong{Alduchov and Eskridge (1996)}.
+
+For air temperatures below 0 °C, slightly different coefficients are sometimes
+used to account for ice surfaces, but the above constants are generally suitable
+for most temperature ranges encountered in agricultural or meteorological data.
 }
 \examples{
-dp_mint(10, 80)  # Expected output: around 6.71
+# Dew point for 10 °C and 80\% RH
+dp_mint(10, 80)
 
+# Vectorized input
+dp_mint(c(5, 10, 15), c(90, 70, 50))
+
+}
+\references{
+Alduchov, O. A., & Eskridge, R. E. (1996). \emph{Improved Magnus Form Approximation of Saturation Vapor Pressure}.
+Journal of Applied Meteorology, 35(4), 601–609. \doi{10.1175/1520-0450(1996)035<0601:IMFAOS>2.0.CO;2}
 }
